@@ -1,0 +1,34 @@
+name: Validate Dynamic Showcase Skill
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run skill validation
+        run: |
+          if [ -d "skills/public/dynamic-showcase-web-skill" ]; then
+            cd skills/public/dynamic-showcase-web-skill
+          fi
+          make validate
+
+      - name: Smoke release note generation
+        run: |
+          if [ -d "skills/public/dynamic-showcase-web-skill" ]; then
+            cd skills/public/dynamic-showcase-web-skill
+          fi
+          python3 scripts/generate_release_note.py --version v0.0.0-ci --output /tmp/v0.0.0-ci.md
