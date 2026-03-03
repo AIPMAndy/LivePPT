@@ -1,6 +1,6 @@
 # Open Source Launch Checklist
 
-适用于 `dynamic-showcase-web-skill` 首次公开发布与后续版本发布。
+适用于 `liveppt-skill` 首次公开发布与后续版本发布。
 
 ## 1) Pre-Launch Validation
 
