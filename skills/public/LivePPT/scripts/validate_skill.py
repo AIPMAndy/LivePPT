@@ -14,6 +14,8 @@ REQUIRED_FILES = [
     "CONTRIBUTING.md",
     "LICENSE",
     "scripts/add_theme.py",
+    "scripts/generate_demo_gif.py",
+    "scripts/generate_distribution_pack.py",
     "scripts/generate_showcase_plan.py",
     "scripts/generate_release_note.py",
     "references/design-system-playbook.md",
@@ -39,6 +41,8 @@ def smoke_test_scripts(root: Path) -> None:
         temp_path = Path(temp_dir)
         checklist_output = temp_path / "checklist.md"
         theme_output = temp_path / "theme.css"
+        demo_output = temp_path / "demo.gif"
+        distribution_output = temp_path / "distribution.md"
 
         run(
             [
@@ -88,7 +92,43 @@ def smoke_test_scripts(root: Path) -> None:
             root,
         )
 
-        if not checklist_output.exists() or not theme_output.exists() or not (temp_path / "release.md").exists():
+        run(
+            [
+                sys.executable,
+                "scripts/generate_demo_gif.py",
+                "--output",
+                str(demo_output),
+                "--seconds",
+                "1.2",
+                "--fps",
+                "12",
+                "--width",
+                "640",
+                "--height",
+                "360",
+            ],
+            root,
+        )
+
+        run(
+            [
+                sys.executable,
+                "scripts/generate_distribution_pack.py",
+                "--version",
+                "v0.0.0-smoke",
+                "--output",
+                str(distribution_output),
+            ],
+            root,
+        )
+
+        if (
+            not checklist_output.exists()
+            or not theme_output.exists()
+            or not (temp_path / "release.md").exists()
+            or not demo_output.exists()
+            or not distribution_output.exists()
+        ):
             raise SystemExit("Smoke test failed: expected output files not created")
 
 

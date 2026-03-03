@@ -13,15 +13,18 @@
 - [ ] 确认 `LICENSE`、`ROADMAP.md`、`CHANGELOG.md` 已更新。
 - [ ] 确认无敏感信息（token、密钥、账号凭据）被提交。
 - [ ] 确认生成目录（如 `plans/`、`themes/`）不会进入版本库。
+- [ ] 确认 `README.md` 与 `README_EN.md` 同步更新且顶部可互跳。
+- [ ] 确认 `.github/ISSUE_TEMPLATE/` 模板可用（bug + feature）。
 
 ## 3) Release Preparation
 
 - [ ] 生成或更新版本说明：`make release-note VERSION=<version>`。
+- [ ] 生成分发文案包：`make distribution-pack VERSION=<version>`。
 - [ ] 在 `releases/<version>.md` 填写 Added/Changed/Fixed/User Value。
 - [ ] 核对版本号、发布日期和 Roadmap 阶段是否一致。
 
 ## 4) Public Publishing
 
 - [ ] 打 tag（如 `v0.1.2`）并发布 GitHub Release。
-- [ ] 在 README 中补充 demo 链接（可选 GIF/截图）。
+- [ ] 在 README 中补充 demo 链接与视觉预览（GIF/截图/SVG 至少一项）。
 - [ ] 发布后 48 小时内处理首批 issue / PR 反馈。

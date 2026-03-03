@@ -256,7 +256,7 @@ function renderCover(scene) {
           <p class="hero-sub">${escapeHtml(scene.subtitle)}</p>
           <div class="hero-actions">
             <a class="action-btn primary" href="${repo}" target="_blank" rel="noreferrer">⭐ 查看 GitHub 仓库</a>
-            <a class="action-btn secondary" href="${repo}/tree/main/skills/public/LivePPT" target="_blank" rel="noreferrer">📦 打开 Skill 目录</a>
+            <a class="action-btn secondary" href="${repo}/tree/main/demos/liveppt-promo" target="_blank" rel="noreferrer">🎬 查看 Demo 源码</a>
           </div>
         </div>
 

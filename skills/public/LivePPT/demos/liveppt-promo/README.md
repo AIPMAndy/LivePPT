@@ -23,7 +23,7 @@
 方式二（本地服务，推荐）：
 
 ```bash
-cd skills/public/LivePPT/demos/liveppt-promo
+cd demos/liveppt-promo
 python3 -m http.server 4188
 ```
 
