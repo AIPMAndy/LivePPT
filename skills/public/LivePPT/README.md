@@ -137,4 +137,6 @@ make release-note VERSION=v0.1.3
 
 ## License
 
-MIT.
+MIT + Additional Terms（附加条款）.
+
+See `LICENSE` for full terms.
