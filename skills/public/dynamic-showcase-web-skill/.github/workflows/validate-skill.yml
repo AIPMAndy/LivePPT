@@ -1,4 +1,4 @@
-name: Validate Dynamic Showcase Skill
+name: Validate LivePPT Skill
 
 on:
   pull_request:
