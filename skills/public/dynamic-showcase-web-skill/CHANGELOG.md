@@ -1,6 +1,19 @@
 # Changelog
 
-All notable changes to `dynamic-showcase-web-skill` are documented in this file.
+All notable changes to `liveppt-skill` are documented in this file.
+
+## [Unreleased]
+
+### Added
+
+- 新增 `assets/templates/starter/App.tsx` 与 `styles.css`，提供可点击分镜 starter。
+- 新增 `assets/templates/starter/DIFFERENTIATION.md`，明确 anti-clone 约束。
+- 新增 starter 使用说明：`assets/templates/starter/README.md`。
+
+### Changed
+
+- 品牌命名统一为 `LivePPT Skill`（`SKILL.md`、README、workflow、贡献文档等）。
+- 新增 `prism-command`、`linen-editorial`、`signal-night` 风格预设。
 
 ## [v0.1.2] - 2026-03-02
 
