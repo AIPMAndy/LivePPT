@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `liveppt-skill` are documented in this file.
+All notable changes to `LivePPT` are documented in this file.
 
 ## [Unreleased]
 
@@ -12,7 +12,7 @@ All notable changes to `liveppt-skill` are documented in this file.
 
 ### Changed
 
-- 品牌命名统一为 `LivePPT Skill`（`SKILL.md`、README、workflow、贡献文档等）。
+- 品牌命名统一为 `LivePPT`（`SKILL.md`、README、workflow、贡献文档等）。
 - 新增 `prism-command`、`linen-editorial`、`signal-night` 风格预设。
 
 ## [v0.1.2] - 2026-03-02
