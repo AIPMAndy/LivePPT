@@ -37,7 +37,7 @@ def ensure_required_files(root: Path) -> None:
 def smoke_test_scripts(root: Path) -> None:
     with tempfile.TemporaryDirectory(prefix="LivePPT-") as temp_dir:
         temp_path = Path(temp_dir)
-        plan_output = temp_path / "plan.md"
+        checklist_output = temp_path / "checklist.md"
         theme_output = temp_path / "theme.css"
 
         run(
@@ -48,10 +48,8 @@ def smoke_test_scripts(root: Path) -> None:
                 "Smoke Test",
                 "--audience",
                 "开发者",
-                "--mode",
-                "7",
                 "--output",
-                str(plan_output),
+                str(checklist_output),
             ],
             root,
         )
@@ -90,7 +88,7 @@ def smoke_test_scripts(root: Path) -> None:
             root,
         )
 
-        if not plan_output.exists() or not theme_output.exists() or not (temp_path / "release.md").exists():
+        if not checklist_output.exists() or not theme_output.exists() or not (temp_path / "release.md").exists():
             raise SystemExit("Smoke test failed: expected output files not created")
 
 

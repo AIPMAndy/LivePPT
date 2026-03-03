@@ -36,7 +36,7 @@ description: Build click-through cinematic web showcase pages with dynamic trans
 ### Step 2: Scaffold Project
 
 - 默认技术栈：`React + Vite + Framer Motion + CSS Variables`。
-- 使用 `scripts/generate_showcase_plan.py` 先产出执行清单（支持 `--mode 7/14`）。
+- 使用 `scripts/generate_showcase_plan.py` 先产出阶段执行清单。
 - 根据风格需求建立主题令牌：`color`, `typography`, `radius`, `shadow`, `motion`。
 
 ### Step 3: Build Scene System
@@ -86,7 +86,7 @@ description: Build click-through cinematic web showcase pages with dynamic trans
 ## Resources (optional)
 
 ### scripts/
-- `scripts/generate_showcase_plan.py`：生成 7/14 天构建与发布计划。
+- `scripts/generate_showcase_plan.py`：生成阶段化构建与发布执行清单。
 - `scripts/add_theme.py`：根据参数生成主题 CSS 变量文件。
 - `scripts/generate_release_note.py`：生成版本发布说明模板。
 - `scripts/validate_skill.py`：执行必需文件检查和脚本 smoke test。

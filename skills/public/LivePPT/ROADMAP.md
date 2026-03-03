@@ -9,7 +9,7 @@
 
 ## v0.1.1
 
-- Add 7/14 dual planning mode in plan generator.
+- Refine plan generator into stage-based checklist output.
 - Add unified local validation command (`make validate`).
 - Add CI validation workflow and PR template.
 

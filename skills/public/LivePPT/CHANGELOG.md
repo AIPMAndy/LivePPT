@@ -46,7 +46,7 @@ All notable changes to `LivePPT` are documented in this file.
 
 ### Changed
 
-- `scripts/generate_showcase_plan.py` 支持 `--mode 7/14`。
+- `scripts/generate_showcase_plan.py` 改为输出阶段执行清单，不再依赖固定天数模式。
 - 文档去除绝对路径，提升跨环境可移植性。
 
 ## [v0.1.0] - 2026-03-02

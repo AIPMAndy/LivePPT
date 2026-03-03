@@ -5,7 +5,7 @@
 ## 1) Pre-Launch Validation
 
 - [ ] 在 skill 根目录执行 `make validate` 并通过。
-- [ ] 手动跑一次计划生成、主题生成、release note 生成命令。
+- [ ] 手动跑一次执行清单生成、主题生成、release note 生成命令。
 - [ ] 确认 `README.md`、`SKILL.md`、`CONTRIBUTING.md` 与当前行为一致。
 
 ## 2) Repository Hygiene

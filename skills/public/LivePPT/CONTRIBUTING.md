@@ -12,7 +12,7 @@
 
 - 新主题预设（颜色、字体系、动效曲线）。
 - 新场景模板（产品发布、课程讲义、路演等）。
-- 新脚本（自动生成计划、主题、检查项等）。
+- 新脚本（自动生成执行清单、主题、检查项等）。
 - 文档改进（中文优先，可补充双语）。
 
 ## 3. Local Validation
@@ -21,7 +21,7 @@
 
 ```bash
 make validate
-python3 scripts/generate_showcase_plan.py --project "Smoke Test" --audience "开发者" --mode 7 --output /tmp/plan.md
+python3 scripts/generate_showcase_plan.py --project "Smoke Test" --audience "开发者" --output /tmp/checklist.md
 python3 scripts/add_theme.py --name smoke --bg "#000" --surface "#111" --text "#fff" --accent "#7c3aed" --motion "ease" --output /tmp/theme.css
 python3 scripts/generate_release_note.py --version v0.0.0-smoke --output /tmp/release.md
 ```

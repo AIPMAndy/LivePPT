@@ -18,7 +18,7 @@ Build cinematic click-through web showcases as a premium alternative to static s
 
 ## Core Features
 
-- 7/14-day implementation planning (`scripts/generate_showcase_plan.py`).
+- Implementation checklist generation (`scripts/generate_showcase_plan.py`).
 - Runtime theme generation with token output (`scripts/add_theme.py`).
 - One-command local validation (`make validate`).
 - Release note scaffolding (`scripts/generate_release_note.py`).
@@ -65,26 +65,14 @@ LivePPT/
 
 ## Quick Start
 
-Generate a 14-day implementation plan:
+Generate an implementation checklist:
 
 ```bash
 python3 scripts/generate_showcase_plan.py \
   --project "AI产品发布网页演示" \
   --audience "技术决策者" \
-  --mode 14 \
   --style "neo-luxury" \
-  --output plans/14-day-plan.md
-```
-
-Generate a fast 7-day sprint plan:
-
-```bash
-python3 scripts/generate_showcase_plan.py \
-  --project "AI产品发布网页演示" \
-  --audience "技术决策者" \
-  --mode 7 \
-  --style "neo-luxury" \
-  --output plans/7-day-plan.md
+  --output plans/implementation-checklist.md
 ```
 
 Create a new theme token file:

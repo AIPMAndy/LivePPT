@@ -12,7 +12,7 @@
 - `script.js`：分镜数据与交互逻辑
 - `scene-map.md`：逐屏叙事大纲
 - `theme-spec.md`：主题令牌定义
-- `plan-7d.md`：由脚本生成的 7 天执行计划
+- `execution-checklist.md`：由脚本生成的阶段执行清单
 
 ## Run
 
