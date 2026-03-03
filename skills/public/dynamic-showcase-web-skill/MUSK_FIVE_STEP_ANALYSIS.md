@@ -1,4 +1,4 @@
-# Musk Five-Step Analysis - liveppt-skill
+# Musk Five-Step Analysis - LivePPT
 
 > 历史说明：本文档记录的是 `v0.1.1` 实施前的分析快照；当前状态请以 `README.md`、`ROADMAP.md` 与 `CHANGELOG.md` 为准。
 
