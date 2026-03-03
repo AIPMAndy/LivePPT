@@ -1,9 +1,9 @@
 ---
-name: liveppt-skill
+name: LivePPT
 description: Build click-through cinematic web showcase pages with dynamic transitions and runtime style switching. Use when users ask for PPT alternatives, interactive launch pages, or high-end storytelling websites with multiple visual styles.
 ---
 
-# LivePPT Skill
+# LivePPT
 
 ## Overview
 
