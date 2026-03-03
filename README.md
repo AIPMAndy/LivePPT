@@ -8,7 +8,7 @@
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/LivePPT?style=social)](https://github.com/AIPMAndy/LivePPT/stargazers)
 [![Forks](https://img.shields.io/github/forks/AIPMAndy/LivePPT?style=social)](https://github.com/AIPMAndy/LivePPT/network/members)
 [![Last Commit](https://img.shields.io/github/last-commit/AIPMAndy/LivePPT)](https://github.com/AIPMAndy/LivePPT/commits/main)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./skills/public/dynamic-showcase-web-skill/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT%2BTerms-blue.svg)](./skills/public/LivePPT/LICENSE)
 
 **简体中文** | [English](#english)
 
@@ -37,7 +37,7 @@
 ## ⚡ 60 秒快速开始
 
 ```bash
-cd skills/public/dynamic-showcase-web-skill
+cd skills/public/LivePPT
 
 # 1) 校验结构与脚本
 make validate
@@ -66,7 +66,7 @@ python3 scripts/add_theme.py \
 ```text
 LivePPT/
 ├── README.md
-└── skills/public/dynamic-showcase-web-skill/
+└── skills/public/LivePPT/
     ├── SKILL.md
     ├── README.md
     ├── CHANGELOG.md
@@ -90,11 +90,13 @@ LivePPT/
 - 提交新场景模板（路演 / 课程 / 发布会）。
 - 提交脚本增强（自动校验、发布、文档生成）。
 
-查看：`skills/public/dynamic-showcase-web-skill/CONTRIBUTING.md`
+查看：`skills/public/LivePPT/CONTRIBUTING.md`
 
 ## 📄 License
 
-MIT
+MIT + Additional Terms（附加条款）
+
+See: `skills/public/LivePPT/LICENSE`
 
 ---
 
@@ -112,16 +114,16 @@ MIT
 ### Quick Start
 
 ```bash
-cd skills/public/dynamic-showcase-web-skill
+cd skills/public/LivePPT
 make validate
 ```
 
 ### Key Documents
 
-- Skill spec: `skills/public/dynamic-showcase-web-skill/SKILL.md`
-- Guide: `skills/public/dynamic-showcase-web-skill/README.md`
-- Changelog: `skills/public/dynamic-showcase-web-skill/CHANGELOG.md`
-- Launch checklist: `skills/public/dynamic-showcase-web-skill/OPEN_SOURCE_LAUNCH_CHECKLIST.md`
+- Skill spec: `skills/public/LivePPT/SKILL.md`
+- Guide: `skills/public/LivePPT/README.md`
+- Changelog: `skills/public/LivePPT/CHANGELOG.md`
+- Launch checklist: `skills/public/LivePPT/OPEN_SOURCE_LAUNCH_CHECKLIST.md`
 
 ### Call for Contributors
 
