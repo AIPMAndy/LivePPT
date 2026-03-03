@@ -139,4 +139,5 @@ make release-note VERSION=v0.1.3
 
 MIT + Additional Terms（附加条款）.
 
-See `LICENSE` for full terms.
+- Chinese terms: `LICENSE`
+- English terms: `LICENSE_EN.md`
