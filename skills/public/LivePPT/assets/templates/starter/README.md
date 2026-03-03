@@ -4,9 +4,9 @@ This starter is designed to be **premium but clearly different** from creator-or
 
 ## Style Direction
 
-- Visual language: structured command-board + restrained gradient lighting.
+- Visual language: neo-luxury editorial board + restrained metallic glow.
 - Information rhythm: left narrative rail + center hero scene + right proof metrics.
-- Motion pattern: short slide/fade transitions, no heavy blur stacking.
+- Motion pattern: short slide/fade transitions, controlled cadence, no heavy blur stacking.
 
 ## Why It Is Intentionally Different
 
@@ -39,3 +39,9 @@ npm run dev
 - `←` / `→`: previous/next scene.
 - Scene rail click: direct jump.
 - Theme switch: runtime style swap without content change.
+
+## Default Theme Pack
+
+- `Ivory Luxe`: 白色奢侈质感，适合发布会与高端产品讲述。
+- `Champagne Editorial`: 香槟浅色叙事，适合咨询/策略汇报。
+- `Emerald Reserve`: 墨绿深夜风格，适合技术/平台类品牌表达。

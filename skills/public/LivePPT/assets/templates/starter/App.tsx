@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useState} from "react";
 
 import "./styles.css";
 
-type ThemeName = "prism-command" | "linen-editorial" | "signal-night";
+type ThemeName = "ivory-luxe" | "champagne-editorial" | "emerald-reserve";
 
 interface Metric {
   label: string;
@@ -24,7 +24,7 @@ const SCENES: Scene[] = [
     id: "scene-01",
     kicker: "Narrative Start",
     title: "Turn linear slides into decision-ready web stories",
-    body: "LivePPT keeps the same narrative spine while delivering click-through interactions and scene-level pacing.",
+    body: "LivePPT keeps one narrative spine while delivering click-through pacing and luxury-grade visual consistency.",
     insight: "One scene carries one decision signal.",
     metrics: [
       {label: "Screens", value: "8", note: "Core flow"},
@@ -36,7 +36,7 @@ const SCENES: Scene[] = [
     id: "scene-02",
     kicker: "Problem",
     title: "Why traditional decks break in real demos",
-    body: "Static pages cannot adapt to stakeholder questions, and visual changes often require rebuilding the whole deck.",
+    body: "Static pages cannot adapt to stakeholder questions, and style changes often force full deck rebuilds.",
     insight: "High polish fails when interaction is missing.",
     metrics: [
       {label: "Rework", value: "42%", note: "Visual-only edits"},
@@ -48,7 +48,7 @@ const SCENES: Scene[] = [
     id: "scene-03",
     kicker: "Solution",
     title: "A structured scene engine with tokenized themes",
-    body: "Content, structure, and style are separated. Teams can preserve message flow while switching visual identity in seconds.",
+    body: "Content, structure, and style tokens are separated. Teams can preserve message flow while switching brand identity in seconds.",
     insight: "Stable structure, flexible presentation.",
     metrics: [
       {label: "Modes", value: "Click / Key", note: "Dual navigation"},
@@ -60,7 +60,7 @@ const SCENES: Scene[] = [
     id: "scene-04",
     kicker: "CTA",
     title: "Ship one polished showcase this week",
-    body: "Use the starter, swap your copy, choose a theme, and publish a live demo with changelog-backed release notes.",
+    body: "Use the starter, swap your copy, choose a luxury theme, and publish a live demo with changelog-backed release notes.",
     insight: "From brief to public demo in one workflow.",
     metrics: [
       {label: "Output", value: "Demo URL", note: "Public-ready"},
@@ -71,9 +71,9 @@ const SCENES: Scene[] = [
 ];
 
 const THEMES: Array<{name: ThemeName; label: string}> = [
-  {name: "prism-command", label: "Prism Command"},
-  {name: "linen-editorial", label: "Linen Editorial"},
-  {name: "signal-night", label: "Signal Night"},
+  {name: "ivory-luxe", label: "Ivory Luxe"},
+  {name: "champagne-editorial", label: "Champagne Editorial"},
+  {name: "emerald-reserve", label: "Emerald Reserve"},
 ];
 
 const nextIndex = (current: number, delta: number, total: number): number => {
@@ -91,7 +91,7 @@ const nextIndex = (current: number, delta: number, total: number): number => {
 
 const App: React.FC = () => {
   const [sceneIndex, setSceneIndex] = useState(0);
-  const [theme, setTheme] = useState<ThemeName>("prism-command");
+  const [theme, setTheme] = useState<ThemeName>("ivory-luxe");
 
   const activeScene = SCENES[sceneIndex];
   const progress = useMemo(
@@ -131,7 +131,7 @@ const App: React.FC = () => {
       <header className="lp-topbar">
         <div className="lp-brand">
           <span className="lp-brand-chip">LivePPT</span>
-          <span className="lp-brand-text">Distinct Showcase Starter</span>
+          <span className="lp-brand-text">Neo Luxury Showcase Starter</span>
         </div>
 
         <label className="lp-theme-switch" htmlFor="theme-switch">

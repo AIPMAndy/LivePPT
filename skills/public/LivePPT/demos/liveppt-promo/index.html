@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LivePPT · 项目推广动态演示（Ivory Luxe）</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app" class="deck" tabindex="0">
+      <div class="bg-blob blob-a"></div>
+      <div class="bg-blob blob-b"></div>
+      <div class="bg-blob blob-c"></div>
+      <div class="grid-dots"></div>
+
+      <div class="watermark">AI 酋长 Andy · LivePPT</div>
+
+      <div class="top-progress">
+        <div id="progressBar"></div>
+      </div>
+
+      <main id="slideRoot" class="slide-root"></main>
+
+      <div class="script-footer">
+        <div id="scriptFooter" class="script-bubble"></div>
+      </div>
+
+      <footer class="bottom-toolbar">
+        <div id="stepHint" class="step-hint"></div>
+        <div id="dotNav" class="dot-nav" aria-label="步骤导航"></div>
+        <div class="controls">
+          <button id="prevBtn" type="button">上一页</button>
+          <button id="playBtn" type="button">▶ 自动播放</button>
+          <button id="nextBtn" type="button">下一页</button>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -3,53 +3,55 @@
 }
 
 .lp-root {
-  --bg: #0c1224;
-  --bg-soft: #121a33;
-  --surface: rgba(15, 22, 44, 0.94);
-  --surface-strong: rgba(10, 15, 31, 0.98);
-  --line: rgba(148, 163, 184, 0.22);
-  --text: #e5ecff;
-  --muted: #9db0db;
-  --accent: #55c2ff;
-  --accent-soft: rgba(85, 194, 255, 0.2);
-  --radius: 14px;
-  --shadow: 0 20px 60px rgba(2, 8, 23, 0.45);
+  --bg: #f8f3ea;
+  --bg-soft: #efe4d3;
+  --surface: rgba(255, 252, 247, 0.95);
+  --surface-strong: rgba(255, 255, 252, 0.98);
+  --line: rgba(160, 122, 75, 0.26);
+  --text: #2d2115;
+  --muted: #7f613c;
+  --accent: #a5773f;
+  --accent-soft: rgba(165, 119, 63, 0.16);
+  --radius: 12px;
+  --shadow: 0 20px 60px rgba(112, 83, 47, 0.16);
   --duration: 520ms;
+  --font-display: "Bodoni MT", "Didot", "Songti SC", "Times New Roman", serif;
+  --font-body: "Avenir Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 10% 10%, #1d2850 0%, var(--bg) 52%),
+  background: radial-gradient(circle at 10% 10%, #ddc6a9 0%, var(--bg) 52%),
     linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 100%);
   color: var(--text);
-  font-family: "Inter", "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-body);
   display: flex;
   flex-direction: column;
 }
 
-.lp-root[data-theme="linen-editorial"] {
-  --bg: #f3efe6;
-  --bg-soft: #ece6db;
-  --surface: rgba(255, 255, 255, 0.95);
-  --surface-strong: rgba(255, 255, 255, 0.98);
-  --line: rgba(100, 116, 139, 0.28);
-  --text: #1f2937;
-  --muted: #5b6473;
-  --accent: #b45309;
-  --accent-soft: rgba(180, 83, 9, 0.15);
-  --shadow: 0 18px 40px rgba(71, 85, 105, 0.16);
+.lp-root[data-theme="champagne-editorial"] {
+  --bg: #f4ede3;
+  --bg-soft: #e8ddcf;
+  --surface: rgba(255, 251, 245, 0.95);
+  --surface-strong: rgba(255, 254, 250, 0.98);
+  --line: rgba(148, 118, 73, 0.28);
+  --text: #2d2115;
+  --muted: #785c38;
+  --accent: #a5773f;
+  --accent-soft: rgba(165, 119, 63, 0.14);
+  --shadow: 0 18px 40px rgba(62, 38, 15, 0.16);
 }
 
-.lp-root[data-theme="signal-night"] {
-  --bg: #0b1111;
-  --bg-soft: #122020;
-  --surface: rgba(10, 24, 24, 0.95);
-  --surface-strong: rgba(7, 14, 14, 0.98);
-  --line: rgba(148, 163, 184, 0.24);
-  --text: #def7f3;
-  --muted: #9ecac4;
-  --accent: #0fd6be;
-  --accent-soft: rgba(15, 214, 190, 0.18);
+.lp-root[data-theme="emerald-reserve"] {
+  --bg: #070a08;
+  --bg-soft: #101612;
+  --surface: rgba(12, 20, 15, 0.95);
+  --surface-strong: rgba(8, 12, 10, 0.98);
+  --line: rgba(145, 177, 141, 0.28);
+  --text: #dcecdc;
+  --muted: #a3bda3;
+  --accent: #89a284;
+  --accent-soft: rgba(137, 162, 132, 0.22);
 }
 
 .lp-bg-orb {
@@ -73,14 +75,14 @@
   height: 360px;
   right: -120px;
   bottom: -140px;
-  background: #6d8dff;
+  background: #7f5d35;
 }
 
 .lp-noise {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.6px, transparent 0.6px);
+  background-image: radial-gradient(rgba(128, 97, 60, 0.08) 0.6px, transparent 0.6px);
   background-size: 3px 3px;
   opacity: 0.22;
 }
@@ -119,6 +121,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
+  color: var(--accent);
 }
 
 .lp-brand-text {
@@ -199,6 +202,7 @@
 .lp-rail-label {
   font-size: 12px;
   font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .lp-stage {
@@ -251,7 +255,9 @@
   margin: 0;
   font-size: clamp(1.6rem, 1.9vw, 2.5rem);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .lp-body {
@@ -295,8 +301,9 @@
 .lp-metric-value {
   font-size: 28px;
   line-height: 1;
-  letter-spacing: -0.03em;
-  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-family: var(--font-display);
 }
 
 .lp-metric-note {
@@ -356,6 +363,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: transform 180ms ease, background 180ms ease;
+  letter-spacing: 0.03em;
 }
 
 .lp-controls button:hover:not(:disabled) {
