@@ -1,4 +1,0 @@
-interface:
-  display_name: "LivePPT"
-  short_description: "Build cinematic web showcases with style switching."
-  default_prompt: "帮我做一个点击切换的动态网页演示，支持多风格主题，先出结构再出代码。"
