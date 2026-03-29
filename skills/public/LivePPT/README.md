@@ -51,7 +51,23 @@ cd LivePPT
 make validate
 ```
 
-### 最短路径：一条命令生成 HTML
+### 最短路径：现成 README 直接生成 HTML
+
+```bash
+make build-from-readme \
+  README_INPUT=README.md \
+  OUTPUT=dist/readme-deck.html \
+  STYLE=prism-command \
+  BRAND="LivePPT"
+```
+
+然后直接打开：
+
+```bash
+open dist/readme-deck.html
+```
+
+### 如果你没有内容，再用一条命令生成 HTML
 
 ```bash
 make build-showcase \
@@ -61,24 +77,6 @@ make build-showcase \
   BRAND="LivePPT" \
   PLAN=plans/showcase.md \
   OUTPUT=dist/index.html
-```
-
-然后直接打开：
-
-```bash
-open dist/index.html
-```
-
-### 新增：README 直接生成 HTML deck
-
-如果你已经有现成 README，可以直接：
-
-```bash
-make build-from-readme \
-  README_INPUT=README.md \
-  OUTPUT=dist/readme-deck.html \
-  STYLE=prism-command \
-  BRAND="LivePPT"
 ```
 
 这条链路适合：

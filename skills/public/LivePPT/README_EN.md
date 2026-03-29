@@ -52,7 +52,23 @@ cd LivePPT
 make validate
 ```
 
-### Fastest Path: Generate an HTML Deck in One Command
+### Fastest Path: Build an HTML deck directly from README
+
+```bash
+make build-from-readme \
+  README_INPUT=README.md \
+  OUTPUT=dist/readme-deck.html \
+  STYLE=prism-command \
+  BRAND="LivePPT"
+```
+
+Then open it directly:
+
+```bash
+open dist/readme-deck.html
+```
+
+### If you do not have content yet, generate HTML in one command
 
 ```bash
 make build-showcase \
@@ -62,24 +78,6 @@ make build-showcase \
   BRAND="LivePPT" \
   PLAN=plans/showcase.md \
   OUTPUT=dist/index.html
-```
-
-Then open it directly:
-
-```bash
-open dist/index.html
-```
-
-### New: Build an HTML deck directly from README
-
-If you already have a README, you can now run:
-
-```bash
-make build-from-readme \
-  README_INPUT=README.md \
-  OUTPUT=dist/readme-deck.html \
-  STYLE=prism-command \
-  BRAND="LivePPT"
 ```
 
 This path is useful when:
