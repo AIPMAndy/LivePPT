@@ -18,6 +18,7 @@ REQUIRED_FILES = [
     "scripts/generate_distribution_pack.py",
     "scripts/generate_showcase_plan.py",
     "scripts/generate_release_note.py",
+    "scripts/render_plan_to_html.py",
     "references/design-system-playbook.md",
     "references/style-presets.md",
     "assets/templates/scene-map.md",
@@ -43,6 +44,7 @@ def smoke_test_scripts(root: Path) -> None:
         theme_output = temp_path / "theme.css"
         demo_output = temp_path / "demo.gif"
         distribution_output = temp_path / "distribution.md"
+        html_output = temp_path / "index.html"
 
         run(
             [
@@ -122,12 +124,24 @@ def smoke_test_scripts(root: Path) -> None:
             root,
         )
 
+        run(
+            [
+                sys.executable,
+                "scripts/render_plan_to_html.py",
+                str(checklist_output),
+                "--output",
+                str(html_output),
+            ],
+            root,
+        )
+
         if (
             not checklist_output.exists()
             or not theme_output.exists()
             or not (temp_path / "release.md").exists()
             or not demo_output.exists()
             or not distribution_output.exists()
+            or not html_output.exists()
         ):
             raise SystemExit("Smoke test failed: expected output files not created")
 
