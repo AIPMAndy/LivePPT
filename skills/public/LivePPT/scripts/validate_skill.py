@@ -19,6 +19,7 @@ REQUIRED_FILES = [
     "scripts/generate_showcase_plan.py",
     "scripts/generate_release_note.py",
     "scripts/render_plan_to_html.py",
+    "scripts/build_showcase.py",
     "references/design-system-playbook.md",
     "references/style-presets.md",
     "assets/templates/scene-map.md",
@@ -131,6 +132,28 @@ def smoke_test_scripts(root: Path) -> None:
                 str(checklist_output),
                 "--output",
                 str(html_output),
+                "--theme",
+                "cyber-pulse",
+                "--brand",
+                "SmokeBrand",
+            ],
+            root,
+        )
+
+        run(
+            [
+                sys.executable,
+                "scripts/build_showcase.py",
+                "--project",
+                "Smoke Build",
+                "--audience",
+                "开发者",
+                "--style",
+                "neo-luxury",
+                "--plan-output",
+                str(temp_path / "showcase-plan.md"),
+                "--html-output",
+                str(temp_path / "showcase.html"),
             ],
             root,
         )
@@ -142,6 +165,8 @@ def smoke_test_scripts(root: Path) -> None:
             or not demo_output.exists()
             or not distribution_output.exists()
             or not html_output.exists()
+            or not (temp_path / "showcase-plan.md").exists()
+            or not (temp_path / "showcase.html").exists()
         ):
             raise SystemExit("Smoke test failed: expected output files not created")
 

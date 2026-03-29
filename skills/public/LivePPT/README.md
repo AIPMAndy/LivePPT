@@ -34,9 +34,27 @@ cd LivePPT
 make validate
 ```
 
-### 现在已支持：Markdown 计划直接生成 HTML
+### 现在已支持：一条命令生成 HTML 演示页
 
-先生成分镜执行清单：
+最短路径：
+
+```bash
+make build-showcase \
+  PROJECT="AI 产品发布网页演示" \
+  AUDIENCE="技术决策者" \
+  STYLE=neo-luxury \
+  BRAND="LivePPT" \
+  PLAN=plans/implementation-checklist.md \
+  OUTPUT=dist/index.html
+```
+
+然后直接打开：
+
+```bash
+open dist/index.html
+```
+
+如果你想拆成两步，也可以：
 
 ```bash
 python3 scripts/generate_showcase_plan.py \
@@ -44,26 +62,12 @@ python3 scripts/generate_showcase_plan.py \
   --audience "技术决策者" \
   --style "neo-luxury" \
   --output plans/implementation-checklist.md
-```
 
-再把 Markdown 直接渲染成 HTML：
-
-```bash
 python3 scripts/render_plan_to_html.py \
   plans/implementation-checklist.md \
-  --output dist/index.html
-```
-
-或者直接：
-
-```bash
-make render-html PLAN=examples/sample-launch-plan.md OUTPUT=dist/index.html
-```
-
-然后直接打开：
-
-```bash
-open dist/index.html
+  --output dist/index.html \
+  --theme neo-luxury \
+  --brand "LivePPT"
 ```
 
 本地打开现成示例 Demo：
@@ -76,8 +80,9 @@ python3 -m http.server 4188
 
 ## 核心能力
 
+- `scripts/build_showcase.py`：一条命令生成 plan + 输出 HTML 演示页。
 - `scripts/generate_showcase_plan.py`：生成阶段执行清单。
-- `scripts/render_plan_to_html.py`：把 Markdown 计划直接渲染成可翻页 HTML 演示页。
+- `scripts/render_plan_to_html.py`：把 Markdown 计划直接渲染成可翻页 HTML 演示页，支持主题与品牌参数。
 - `scripts/add_theme.py`：快速生成主题 token CSS。
 - `scripts/generate_release_note.py`：生成 release note 草稿。
 - `scripts/generate_demo_gif.py`：生成可用于 README 的动态预览 GIF。
@@ -91,10 +96,19 @@ python3 -m http.server 4188
 # 校验
 make validate
 
-# 用示例 plan 直接生成 HTML
-make render-html PLAN=examples/sample-launch-plan.md OUTPUT=dist/index.html
+# 一条命令生成 plan + HTML
+make build-showcase \
+  PROJECT="AI 产品发布网页演示" \
+  AUDIENCE="技术决策者" \
+  STYLE=neo-luxury \
+  BRAND="LivePPT" \
+  PLAN=plans/implementation-checklist.md \
+  OUTPUT=dist/index.html
 
-# 先生成 plan，再渲染为 HTML
+# 用现成 markdown 直接生成 HTML
+make render-html PLAN=examples/sample-launch-plan.md OUTPUT=dist/index.html STYLE=cyber-pulse BRAND="LivePPT"
+
+# 手动两步：先生成 plan，再渲染为 HTML
 python3 scripts/generate_showcase_plan.py \
   --project "AI 产品发布网页演示" \
   --audience "技术决策者" \
@@ -102,7 +116,9 @@ python3 scripts/generate_showcase_plan.py \
   --output plans/implementation-checklist.md
 python3 scripts/render_plan_to_html.py \
   plans/implementation-checklist.md \
-  --output dist/index.html
+  --output dist/index.html \
+  --theme neo-luxury \
+  --brand "LivePPT"
 
 # 生成主题
 python3 scripts/add_theme.py \
@@ -127,10 +143,11 @@ make distribution-pack VERSION=v0.1.3
 ## 能力边界（当前版本）
 
 当前这版已经支持：
-- `Markdown plan -> 单文件 HTML deck`
+- `一条命令生成 plan + 单文件 HTML deck`
 - 一级标题生成封面
 - 二级标题生成分页
 - 段落 / 列表自动映射为页面正文和要点
+- 品牌名、封面副标题、主题参数
 - 键盘翻页、底部导航、进度条
 
 当前还没有完全自动化的部分：
