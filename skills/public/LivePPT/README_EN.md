@@ -4,7 +4,7 @@
 
 # LivePPT
 
-**Turn your README into a clickable, theme-switchable, launch-ready web showcase.**
+**Turn Markdown / README into clickable, shareable HTML presentation pages.**
 
 [![License](https://img.shields.io/badge/License-MIT%20%2B%20Additional%20Terms-blue.svg)](LICENSE)
 [![Validate](https://img.shields.io/github/actions/workflow/status/AIPMAndy/LivePPT/validate-skill.yml?label=validate)](https://github.com/AIPMAndy/LivePPT/actions/workflows/validate-skill.yml)
@@ -16,15 +16,36 @@
 
 ---
 
-## Why LivePPT
+## What LivePPT Is
 
-| Capability | Static Slides | Plain README | **LivePPT** |
-|-----------|:-------------:|:------------:|:-----------:|
-| Click-through + keyboard navigation | ⚠️ | ❌ | ✅ |
-| One narrative, multiple visual themes | ❌ | ❌ | ✅ |
-| Launch-style scene storytelling | ⚠️ | ⚠️ | ✅ |
-| Scripted workflow generation | ❌ | ❌ | ✅ |
-| Open-source launch docs included | ⚠️ | ⚠️ | ✅ |
+LivePPT is not a traditional slide tool, and it is not just a prettier README template.
+
+It is closer to a **presentation-page generator**:
+- take Markdown content or a plan
+- run one command
+- get a standalone HTML deck you can open, present, and share
+
+In one line: **turn content into a usable result first, then upgrade the presentation quality over time.**
+
+## Who It Is For
+
+- open-source maintainers who want their README to explain the project faster
+- product builders who need launch pages, pitch pages, or course handouts quickly
+- people who do not want to build a frontend app from scratch just to present content
+
+## Why the Main Entry Should Not Be a “14-Day Plan”
+
+Most first-time users come here because they want one thing:
+**a working HTML showcase page**.
+
+So the main path is now:
+**content -> HTML**
+
+`scripts/generate_showcase_plan.py` is still useful, but it is now clearly positioned as a helper:
+- use it when you do not have content yet
+- use it when you want a structured narrative plan before rendering
+
+It is not the main value of the project, and it should not be the first thing users see.
 
 ## 30-Second Quick Start
 
@@ -34,7 +55,41 @@ cd LivePPT
 make validate
 ```
 
-Generate a stage-based implementation checklist:
+### Fastest Path: Generate an HTML Deck in One Command
+
+```bash
+make build-showcase \
+  PROJECT="AI Product Launch Web Showcase" \
+  AUDIENCE="Technical Decision Makers" \
+  STYLE=neo-luxury \
+  BRAND="LivePPT" \
+  PLAN=plans/implementation-checklist.md \
+  OUTPUT=dist/index.html
+```
+
+Then open it directly:
+
+```bash
+open dist/index.html
+```
+
+## Two Common Workflows
+
+### Workflow 1: I already have Markdown / a plan, just render HTML
+
+```bash
+make render-html \
+  PLAN=examples/sample-launch-plan.md \
+  OUTPUT=dist/index.html \
+  STYLE=cyber-pulse \
+  BRAND="LivePPT"
+```
+
+Best for:
+- users who already wrote the content
+- users who want a result quickly
+
+### Workflow 2: I do not have content yet, generate a plan first
 
 ```bash
 python3 scripts/generate_showcase_plan.py \
@@ -42,9 +97,19 @@ python3 scripts/generate_showcase_plan.py \
   --audience "Technical Decision Makers" \
   --style "neo-luxury" \
   --output plans/implementation-checklist.md
+
+python3 scripts/render_plan_to_html.py \
+  plans/implementation-checklist.md \
+  --output dist/index.html \
+  --theme neo-luxury \
+  --brand "LivePPT"
 ```
 
-Run the promo demo locally:
+Best for:
+- users who need help structuring the narrative first
+- users who want a rough but usable content skeleton before refining it
+
+## Run the Existing Demo Locally
 
 ```bash
 cd demos/liveppt-promo
@@ -52,23 +117,38 @@ python3 -m http.server 4188
 # open http://localhost:4188
 ```
 
-## Core Capabilities
+## Current Core Capabilities
 
-- `scripts/generate_showcase_plan.py`: stage checklist generator.
-- `scripts/add_theme.py`: theme token CSS generator.
-- `scripts/generate_release_note.py`: release note scaffold.
-- `scripts/generate_demo_gif.py`: lightweight animated preview generator for README.
-- `scripts/generate_distribution_pack.py`: multi-channel launch copy generator.
-- `scripts/validate_skill.py`: required-file and smoke-test validator.
-- `assets/templates/starter`: reusable React/Vite starter template.
+- `scripts/build_showcase.py`: one-command plan + HTML generation
+- `scripts/render_plan_to_html.py`: render Markdown into a standalone HTML deck
+- `scripts/generate_showcase_plan.py`: generate a structured plan draft
+- `scripts/add_theme.py`: generate theme token CSS
+- supports theme, brand name, and cover subtitle parameters
+- supports slide navigation, progress bar, dot navigation, and keyboard controls
 
 ## Common Commands
 
 ```bash
-# Validate required docs and scripts
+# Validate project docs and scripts
 make validate
 
-# Create a new theme token file
+# Generate plan + HTML in one command
+make build-showcase \
+  PROJECT="AI Product Launch Web Showcase" \
+  AUDIENCE="Technical Decision Makers" \
+  STYLE=neo-luxury \
+  BRAND="LivePPT" \
+  PLAN=plans/implementation-checklist.md \
+  OUTPUT=dist/index.html
+
+# Render existing Markdown directly to HTML
+make render-html \
+  PLAN=examples/sample-launch-plan.md \
+  OUTPUT=dist/index.html \
+  STYLE=prism-command \
+  BRAND="LivePPT"
+
+# Generate a theme token file
 python3 scripts/add_theme.py \
   --name midnight-luxe \
   --bg "#09090b" \
@@ -77,28 +157,36 @@ python3 scripts/add_theme.py \
   --accent "#d4af37" \
   --motion "cubic-bezier(0.22, 1, 0.36, 1)" \
   --output themes/midnight-luxe.css
-
-# Generate next release note template
-make release-note VERSION=v0.1.3
-
-# Generate README animated preview
-make demo-gif
-
-# Generate launch distribution copy pack
-make distribution-pack VERSION=v0.1.3
 ```
+
+## Current Boundaries
+
+This version already solves:
+- Markdown / plan -> HTML
+- fast generation of a presentable, shareable output
+- switching the same content across different visual themes
+
+This version does not fully solve yet:
+- lossless conversion of arbitrary READMEs into high-fidelity launch pages
+- automatic recognition of complex layouts
+- one-click export of a full static site bundle
+- a richer page template system
+
+So the right mental model for now is:
+**an MVP for turning content into a presentation page**, not the final form of a fully automatic launch-page engine.
 
 ## Use Cases
 
-- Open-source launch storytelling with 6-10 scenes.
-- B2B pitching with style switching (`neo-luxury`, `prism-command`, etc.).
-- Interactive course or knowledge walkthroughs with controlled pacing.
+- open-source launches: turn changelogs into 6-10 scene stories
+- B2B demos: switch the same narrative across different visual styles
+- course content: break dense material into paced presentation pages
+- product intros: lighter than building a frontend app, stronger than a plain README
 
 ## Roadmap
 
-- `v0.1.x`: workflow, scripts, docs, and CI are production-ready.
-- `v0.2.0`: add Lighthouse and responsive quality gates.
-- `v0.3.0`: grow a community-driven template ecosystem.
+- `v0.1.x`: workflow, scripts, docs, and CI are stable
+- `v0.2.x`: improve HTML output quality, layout templates, and theme system
+- `v0.3.x`: add README-to-deck flow, richer template ecosystem, and full static-site export
 
 See [ROADMAP.md](ROADMAP.md) for details.
 
@@ -113,11 +201,11 @@ See [ROADMAP.md](ROADMAP.md) for details.
 
 ## License
 
-`MIT + Additional Terms`.
+`MIT + Additional Terms`
 
 - Chinese terms: `LICENSE`
 - English terms: `LICENSE_EN.md`
 
 ---
 
-If this project helps you, please give it a **Star** or open an Issue with your most wanted template capability.
+If this project helps you, please give it a **Star**, or open an Issue and tell me which template capability you want most.
