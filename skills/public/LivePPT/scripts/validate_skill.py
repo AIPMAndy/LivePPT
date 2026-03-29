@@ -20,6 +20,7 @@ REQUIRED_FILES = [
     "scripts/generate_release_note.py",
     "scripts/render_plan_to_html.py",
     "scripts/build_showcase.py",
+    "scripts/build_from_readme.py",
     "references/design-system-playbook.md",
     "references/style-presets.md",
     "assets/templates/scene-map.md",
@@ -158,6 +159,21 @@ def smoke_test_scripts(root: Path) -> None:
             root,
         )
 
+        run(
+            [
+                sys.executable,
+                "scripts/build_from_readme.py",
+                "README.md",
+                "--output",
+                str(temp_path / "readme.html"),
+                "--theme",
+                "prism-command",
+                "--brand",
+                "SmokeBrand",
+            ],
+            root,
+        )
+
         if (
             not checklist_output.exists()
             or not theme_output.exists()
@@ -167,6 +183,7 @@ def smoke_test_scripts(root: Path) -> None:
             or not html_output.exists()
             or not (temp_path / "showcase-plan.md").exists()
             or not (temp_path / "showcase.html").exists()
+            or not (temp_path / "readme.html").exists()
         ):
             raise SystemExit("Smoke test failed: expected output files not created")
 

@@ -72,6 +72,23 @@ make build-showcase \
 open dist/index.html
 ```
 
+### 新增：README 直接生成 HTML deck
+
+如果你已经有现成 README，可以直接：
+
+```bash
+make build-from-readme \
+  README_INPUT=README.md \
+  OUTPUT=dist/readme-deck.html \
+  STYLE=prism-command \
+  BRAND="LivePPT"
+```
+
+这条链路适合：
+- 你已经写好了 README
+- 你想先快速把现有内容变成演示页
+- 你还不想单独维护一份 plan
+
 ## 两种常见用法
 
 ### 用法 1：我已经有 Markdown / plan，直接生成 HTML
@@ -119,6 +136,7 @@ python3 -m http.server 4188
 ## 当前核心能力
 
 - `scripts/build_showcase.py`：一条命令生成 plan + HTML
+- `scripts/build_from_readme.py`：直接把 README 渲染成 HTML deck
 - `scripts/render_plan_to_html.py`：把 Markdown 渲染为单文件 HTML deck
 - `scripts/generate_showcase_plan.py`：生成结构化 plan 草稿
 - `scripts/add_theme.py`：生成主题 token CSS
@@ -147,6 +165,13 @@ make render-html \
   STYLE=prism-command \
   BRAND="LivePPT"
 
+# 直接把 README 渲染成 deck
+make build-from-readme \
+  README_INPUT=README.md \
+  OUTPUT=dist/readme-deck.html \
+  STYLE=prism-command \
+  BRAND="LivePPT"
+
 # 生成主题
 python3 scripts/add_theme.py \
   --name midnight-luxe \
@@ -161,7 +186,7 @@ python3 scripts/add_theme.py \
 ## 当前边界
 
 当前这版已经能解决：
-- Markdown / plan 直接出 HTML
+- Markdown / plan / README 直接出 HTML
 - 快速得到一个可演示、可分享的结果
 - 同一份内容切换不同主题风格
 

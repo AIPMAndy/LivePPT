@@ -73,6 +73,23 @@ Then open it directly:
 open dist/index.html
 ```
 
+### New: Build an HTML deck directly from README
+
+If you already have a README, you can now run:
+
+```bash
+make build-from-readme \
+  README_INPUT=README.md \
+  OUTPUT=dist/readme-deck.html \
+  STYLE=prism-command \
+  BRAND="LivePPT"
+```
+
+This path is useful when:
+- your README already contains the core narrative
+- you want a quick presentation result first
+- you do not want to maintain a separate plan yet
+
 ## Two Common Workflows
 
 ### Workflow 1: I already have Markdown / a plan, just render HTML
@@ -120,6 +137,7 @@ python3 -m http.server 4188
 ## Current Core Capabilities
 
 - `scripts/build_showcase.py`: one-command plan + HTML generation
+- `scripts/build_from_readme.py`: render an existing README into an HTML deck
 - `scripts/render_plan_to_html.py`: render Markdown into a standalone HTML deck
 - `scripts/generate_showcase_plan.py`: generate a structured plan draft
 - `scripts/add_theme.py`: generate theme token CSS
@@ -148,6 +166,13 @@ make render-html \
   STYLE=prism-command \
   BRAND="LivePPT"
 
+# Render README directly to a deck
+make build-from-readme \
+  README_INPUT=README.md \
+  OUTPUT=dist/readme-deck.html \
+  STYLE=prism-command \
+  BRAND="LivePPT"
+
 # Generate a theme token file
 python3 scripts/add_theme.py \
   --name midnight-luxe \
@@ -162,7 +187,7 @@ python3 scripts/add_theme.py \
 ## Current Boundaries
 
 This version already solves:
-- Markdown / plan -> HTML
+- Markdown / plan / README -> HTML
 - fast generation of a presentable, shareable output
 - switching the same content across different visual themes
 
