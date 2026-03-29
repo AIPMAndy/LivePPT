@@ -21,7 +21,7 @@
 LivePPT 不是传统 PPT 工具，也不是单纯的 README 模板。
 
 它更像一个“演示页生成器”：
-- 输入 Markdown 内容 / plan
+- 输入 Markdown 内容 / README
 - 一条命令生成 HTML
 - 结果可以直接打开、翻页、演示、分享
 
@@ -33,18 +33,15 @@ LivePPT 不是传统 PPT 工具，也不是单纯的 README 模板。
 - 想快速做产品发布页 / 路演页 / 课程讲义的人
 - 不想从零写前端，但又不满足于静态文档的人
 
-## 为什么不是先生成“14 天执行计划”
+## 为什么先出 HTML
 
 很多用户第一次来这个项目，是想要：**直接得到 HTML 演示页**。
 
 所以现在的主入口已经调整为：
 **内容 -> HTML**
 
-而 `generate_showcase_plan.py` 只是辅助能力，用于：
-- 你还没有内容时，先生成一个结构化 plan
-- 你想先梳理叙事，再去渲染结果
-
-它不是主价值，更不是唯一入口。
+`generate_showcase_plan.py` 仍然可用，但它只是辅助生成内容草稿；
+项目的主价值是最终可直接使用的 HTML 结果，不是中间过程文件。
 
 ## 30 秒快速开始
 
@@ -62,7 +59,7 @@ make build-showcase \
   AUDIENCE="技术决策者" \
   STYLE=neo-luxury \
   BRAND="LivePPT" \
-  PLAN=plans/implementation-checklist.md \
+  PLAN=plans/showcase.md \
   OUTPUT=dist/index.html
 ```
 
@@ -87,11 +84,11 @@ make build-from-readme \
 这条链路适合：
 - 你已经写好了 README
 - 你想先快速把现有内容变成演示页
-- 你还不想单独维护一份 plan
+- 你不想额外维护中间内容文件
 
 ## 两种常见用法
 
-### 用法 1：我已经有 Markdown / plan，直接生成 HTML
+### 用法 1：我已经有 Markdown，直接生成 HTML
 
 ```bash
 make render-html \
@@ -105,17 +102,17 @@ make render-html \
 - 已经写好内容
 - 只想快速出一个可展示结果
 
-### 用法 2：我还没有内容，先生成 plan 再出 HTML
+### 用法 2：我还没有内容，先生成 Markdown 再出 HTML
 
 ```bash
 python3 scripts/generate_showcase_plan.py \
   --project "AI 产品发布网页演示" \
   --audience "技术决策者" \
   --style "neo-luxury" \
-  --output plans/implementation-checklist.md
+  --output plans/showcase.md
 
 python3 scripts/render_plan_to_html.py \
-  plans/implementation-checklist.md \
+  plans/showcase.md \
   --output dist/index.html \
   --theme neo-luxury \
   --brand "LivePPT"
@@ -123,7 +120,7 @@ python3 scripts/render_plan_to_html.py \
 
 适合：
 - 还没想清楚怎么组织页面内容
-- 想先拿一个结构化草稿
+- 想先拿一个可编辑的内容草稿
 
 ## 本地查看现成 Demo
 
@@ -135,10 +132,10 @@ python3 -m http.server 4188
 
 ## 当前核心能力
 
-- `scripts/build_showcase.py`：一条命令生成 plan + HTML
+- `scripts/build_showcase.py`：一条命令生成 Markdown 内容 + HTML
 - `scripts/build_from_readme.py`：直接把 README 渲染成 HTML deck
 - `scripts/render_plan_to_html.py`：把 Markdown 渲染为单文件 HTML deck
-- `scripts/generate_showcase_plan.py`：生成结构化 plan 草稿
+- `scripts/generate_showcase_plan.py`：生成结构化 Markdown 内容草稿
 - `scripts/add_theme.py`：生成主题 token CSS
 - 支持主题、品牌名、封面副标题参数
 - 支持翻页、导航点、进度条、键盘控制
@@ -149,13 +146,13 @@ python3 -m http.server 4188
 # 校验项目
 make validate
 
-# 一条命令生成 plan + HTML
+# 一条命令生成 Markdown 内容 + HTML
 make build-showcase \
   PROJECT="AI 产品发布网页演示" \
   AUDIENCE="技术决策者" \
   STYLE=neo-luxury \
   BRAND="LivePPT" \
-  PLAN=plans/implementation-checklist.md \
+  PLAN=plans/showcase.md \
   OUTPUT=dist/index.html
 
 # 用现成 Markdown 直接渲染 HTML
@@ -186,7 +183,7 @@ python3 scripts/add_theme.py \
 ## 当前边界
 
 当前这版已经能解决：
-- Markdown / plan / README 直接出 HTML
+- Markdown / README 直接出 HTML
 - 快速得到一个可演示、可分享的结果
 - 同一份内容切换不同主题风格
 

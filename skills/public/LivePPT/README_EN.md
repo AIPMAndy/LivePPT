@@ -33,7 +33,7 @@ In one line: **turn content into a usable result first, then upgrade the present
 - product builders who need launch pages, pitch pages, or course handouts quickly
 - people who do not want to build a frontend app from scratch just to present content
 
-## Why the Main Entry Should Not Be a “14-Day Plan”
+## Why HTML Output Comes First
 
 Most first-time users come here because they want one thing:
 **a working HTML showcase page**.
@@ -41,11 +41,8 @@ Most first-time users come here because they want one thing:
 So the main path is now:
 **content -> HTML**
 
-`scripts/generate_showcase_plan.py` is still useful, but it is now clearly positioned as a helper:
-- use it when you do not have content yet
-- use it when you want a structured narrative plan before rendering
-
-It is not the main value of the project, and it should not be the first thing users see.
+`scripts/generate_showcase_plan.py` is still available as a helper when you need a draft first,
+but the primary product value is the final HTML result, not an intermediate planning file.
 
 ## 30-Second Quick Start
 
@@ -63,7 +60,7 @@ make build-showcase \
   AUDIENCE="Technical Decision Makers" \
   STYLE=neo-luxury \
   BRAND="LivePPT" \
-  PLAN=plans/implementation-checklist.md \
+  PLAN=plans/showcase.md \
   OUTPUT=dist/index.html
 ```
 
@@ -88,11 +85,11 @@ make build-from-readme \
 This path is useful when:
 - your README already contains the core narrative
 - you want a quick presentation result first
-- you do not want to maintain a separate plan yet
+- you do not want to maintain a separate intermediate content file yet
 
 ## Two Common Workflows
 
-### Workflow 1: I already have Markdown / a plan, just render HTML
+### Workflow 1: I already have Markdown, just render HTML
 
 ```bash
 make render-html \
@@ -106,17 +103,17 @@ Best for:
 - users who already wrote the content
 - users who want a result quickly
 
-### Workflow 2: I do not have content yet, generate a plan first
+### Workflow 2: I do not have content yet, generate Markdown first
 
 ```bash
 python3 scripts/generate_showcase_plan.py \
   --project "AI Product Launch Web Showcase" \
   --audience "Technical Decision Makers" \
   --style "neo-luxury" \
-  --output plans/implementation-checklist.md
+  --output plans/showcase.md
 
 python3 scripts/render_plan_to_html.py \
-  plans/implementation-checklist.md \
+  plans/showcase.md \
   --output dist/index.html \
   --theme neo-luxury \
   --brand "LivePPT"
@@ -124,7 +121,7 @@ python3 scripts/render_plan_to_html.py \
 
 Best for:
 - users who need help structuring the narrative first
-- users who want a rough but usable content skeleton before refining it
+- users who want an editable content draft before refining it
 
 ## Run the Existing Demo Locally
 
@@ -136,10 +133,10 @@ python3 -m http.server 4188
 
 ## Current Core Capabilities
 
-- `scripts/build_showcase.py`: one-command plan + HTML generation
+- `scripts/build_showcase.py`: one-command Markdown draft + HTML generation
 - `scripts/build_from_readme.py`: render an existing README into an HTML deck
 - `scripts/render_plan_to_html.py`: render Markdown into a standalone HTML deck
-- `scripts/generate_showcase_plan.py`: generate a structured plan draft
+- `scripts/generate_showcase_plan.py`: generate a structured Markdown draft
 - `scripts/add_theme.py`: generate theme token CSS
 - supports theme, brand name, and cover subtitle parameters
 - supports slide navigation, progress bar, dot navigation, and keyboard controls
@@ -150,13 +147,13 @@ python3 -m http.server 4188
 # Validate project docs and scripts
 make validate
 
-# Generate plan + HTML in one command
+# Generate Markdown draft + HTML in one command
 make build-showcase \
   PROJECT="AI Product Launch Web Showcase" \
   AUDIENCE="Technical Decision Makers" \
   STYLE=neo-luxury \
   BRAND="LivePPT" \
-  PLAN=plans/implementation-checklist.md \
+  PLAN=plans/showcase.md \
   OUTPUT=dist/index.html
 
 # Render existing Markdown directly to HTML
@@ -187,7 +184,7 @@ python3 scripts/add_theme.py \
 ## Current Boundaries
 
 This version already solves:
-- Markdown / plan / README -> HTML
+- Markdown / README -> HTML
 - fast generation of a presentable, shareable output
 - switching the same content across different visual themes
 
