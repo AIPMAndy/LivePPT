@@ -14,18 +14,18 @@ DEFAULT_SUBTITLE = "Turn your README into a clickable HTML deck without rebuildi
 def clean_markdown(text: str) -> str:
     lines = text.splitlines()
     cleaned = []
-    in_html_block = False
     seen_h1 = False
 
     for line in lines:
         stripped = line.strip()
 
-        if stripped.startswith("<div"):
-            in_html_block = True
+        # Keep Markdown nested in decorative HTML wrappers (many GitHub READMEs
+        # put their H1 inside a <div align="center">). Discard only the tag.
+        if re.fullmatch(r"</?(?:div|p|center)(?:\s+[^>]*)?>", stripped, re.I):
             continue
-        if in_html_block:
-            if stripped.endswith("</div>") or stripped == "</div>":
-                in_html_block = False
+        if re.fullmatch(r"<(?:img|br|hr)\b[^>]*\/?>", stripped, re.I):
+            continue
+        if stripped.startswith("<!--") or stripped.endswith("-->"):
             continue
 
         if stripped.startswith("![") and "](assets/" in stripped:
