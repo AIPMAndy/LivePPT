@@ -550,11 +550,11 @@ def render_html(deck: dict, theme_tokens: Dict[str, str]) -> str:
         page_title=html.escape(deck["title"]),
         deck_json=(
             json.dumps(deck, ensure_ascii=False)
-            .replace("<", "\u003c")
-            .replace(">", "\u003e")
-            .replace("&", "\u0026")
-            .replace("\u2028", "\u2028")
-            .replace("\u2029", "\u2029")
+            .replace("<", "\\u003c")
+            .replace(">", "\\u003e")
+            .replace("&", "\\u0026")
+            .replace("\u2028", "\\u2028")
+            .replace("\u2029", "\\u2029")
         ),
         brand_label=html.escape(deck["brand"]),
         color_scheme="dark" if theme_tokens["bg"].startswith("#0") else "light",
