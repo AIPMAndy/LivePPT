@@ -351,13 +351,17 @@ HTML_TEMPLATE = """<!doctype html>
         padding: 12px; display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center;
       }}
       .hint {{ font-size: 13px; color: var(--text-soft); font-weight: 600; }}
-      .dots {{ display: inline-flex; gap: 8px; }}
-      .dots button {{ width: 10px; height: 10px; border-radius: 999px; border: none; background: color-mix(in srgb, var(--accent) 30%, transparent); cursor: pointer; }}
+      .dots {{ display: inline-flex; gap: 8px; max-width: 100%; overflow-x: auto; padding: 4px; }}
+      .dots button {{ width: 10px; height: 10px; flex: 0 0 auto; border-radius: 999px; border: none; background: color-mix(in srgb, var(--accent) 30%, transparent); cursor: pointer; }}
       .dots button.active {{ width: 36px; background: linear-gradient(90deg, var(--accent-deep), var(--accent)); }}
       .controls {{ display: inline-flex; gap: 8px; }}
       button.ctrl {{ border: 1px solid var(--line); background: color-mix(in srgb, var(--surface-strong) 92%, transparent); color: var(--text); border-radius: 10px; padding: 10px 14px; font-weight: 700; cursor: pointer; }}
       button.ctrl:disabled {{ opacity: 0.45; cursor: not-allowed; }}
       .footer-brand {{ position: fixed; top: 20px; right: 22px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); opacity: 0.74; z-index: 60; }}
+      button:focus-visible {{ outline: 3px solid var(--accent-deep); outline-offset: 4px; }}
+      @media (prefers-reduced-motion: reduce) {{
+        *, *::before, *::after {{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }}
+      }}
       @media (max-width: 900px) {{
         .deck {{ padding: 14px 14px 136px; }}
         .shell {{ padding: 24px; border-radius: 24px; min-height: calc(100vh - 168px); }}
@@ -374,7 +378,7 @@ HTML_TEMPLATE = """<!doctype html>
     <div class=\"footer-brand\">{brand_label}</div>
     <div class=\"progress\"><div id=\"progressBar\" class=\"progress-bar\"></div></div>
     <div class=\"deck\">
-      <main id=\"app\"></main>
+      <main id=\"app\" aria-live=\"polite\" aria-atomic=\"true\"></main>
     </div>
     <footer class=\"footer\">
       <div class=\"toolbar\">
@@ -501,7 +505,7 @@ HTML_TEMPLATE = """<!doctype html>
       }}
 
       function renderDots() {{
-        dots.innerHTML = deck.slides.map((slide, index) => `<button data-index=\"${{index}}\" class=\"${{index === current ? 'active' : ''}}\" aria-label=\"${{escapeHtml(slide.nav || slide.title)}}\"></button>`).join('');
+        dots.innerHTML = deck.slides.map((slide, index) => `<button data-index=\"${{index}}\" class=\"${{index === current ? 'active' : ''}}\" aria-label=\"${{escapeHtml(slide.nav || slide.title)}}\" aria-current=\"${{index === current ? 'step' : 'false'}}\"></button>`).join('');
       }}
 
       function render() {{
@@ -523,10 +527,12 @@ HTML_TEMPLATE = """<!doctype html>
         render();
       }});
       document.addEventListener('keydown', (event) => {{
-        if (event.key === 'ArrowRight' || event.key === ' ') {{ event.preventDefault(); if (current < deck.slides.length - 1) {{ current += 1; render(); }} }}
-        if (event.key === 'ArrowLeft') {{ event.preventDefault(); if (current > 0) {{ current -= 1; render(); }} }}
-        if (event.key === 'Home') {{ current = 0; render(); }}
-        if (event.key === 'End') {{ current = deck.slides.length - 1; render(); }}
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        if (event.target?.closest?.('input, textarea, select, [contenteditable]')) return;
+        if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {{ event.preventDefault(); if (current < deck.slides.length - 1) {{ current += 1; render(); }} }}
+        if (event.key === 'ArrowLeft' || event.key === 'PageUp') {{ event.preventDefault(); if (current > 0) {{ current -= 1; render(); }} }}
+        if (event.key === 'Home') {{ event.preventDefault(); current = 0; render(); }}
+        if (event.key === 'End') {{ event.preventDefault(); current = deck.slides.length - 1; render(); }}
       }});
       render();
     </script>
@@ -542,7 +548,14 @@ def resolve_theme(theme: str) -> Dict[str, str]:
 def render_html(deck: dict, theme_tokens: Dict[str, str]) -> str:
     return HTML_TEMPLATE.format(
         page_title=html.escape(deck["title"]),
-        deck_json=json.dumps(deck, ensure_ascii=False),
+        deck_json=(
+            json.dumps(deck, ensure_ascii=False)
+            .replace("<", "\u003c")
+            .replace(">", "\u003e")
+            .replace("&", "\u0026")
+            .replace("\u2028", "\u2028")
+            .replace("\u2029", "\u2029")
+        ),
         brand_label=html.escape(deck["brand"]),
         color_scheme="dark" if theme_tokens["bg"].startswith("#0") else "light",
         bg=theme_tokens["bg"],
