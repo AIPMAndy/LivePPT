@@ -35,9 +35,10 @@ description: Build click-through cinematic web showcase pages with dynamic trans
 
 ### Step 2: Scaffold Project
 
-- 默认技术栈：`React + Vite + Framer Motion + CSS Variables`。
-- 使用 `scripts/generate_showcase_plan.py` 先产出阶段执行清单。
-- 根据风格需求建立主题令牌：`color`, `typography`, `radius`, `shadow`, `motion`。
+- 默认路径：现有 Markdown 用 `scripts/render_plan_to_html.py`，README 用 `scripts/build_from_readme.py`，生成无需前端构建的单文件 HTML。
+- 只有明确需要复杂组件或应用状态时，再选 `assets/templates/starter` 里的 React/Vite 模板。
+- 没有内容时用 `scripts/generate_showcase_plan.py` 先生成草稿，再渲染。
+- 单文件生成器当前内置 `neo-luxury`、`cyber-pulse`、`minimal-editorial` 和 `prism-command` 四套主题。
 
 ### Step 3: Build Scene System
 
@@ -47,9 +48,9 @@ description: Build click-through cinematic web showcase pages with dynamic trans
 
 ### Step 4: Implement Theme Switching
 
-- 主题使用 CSS 变量和 `data-theme` 驱动。
-- 风格切换不改文案和结构，只替换视觉令牌和动效参数。
-- 使用 `scripts/add_theme.py` 生成新主题变量文件。
+- 单文件 HTML 生成器通过 `--theme` 切换内置主题；修改主题需要重新生成 HTML。
+- React/Vite Starter 使用 CSS 变量和 `data-theme`，可实现运行时主题切换。
+- `scripts/add_theme.py` 只生成主题 token CSS，并不会自动注册到 Python HTML 生成器。
 
 ### Step 5: Add Premium Motion
 
@@ -60,7 +61,7 @@ description: Build click-through cinematic web showcase pages with dynamic trans
 ### Step 6: QA and Publish
 
 - 校验移动端和桌面端适配。
-- Lighthouse 目标：Performance >= 85, Accessibility >= 90。
+- Lighthouse 建议目标：Performance >= 85, Accessibility >= 90；未实际测量前不得声称已达标。
 - 产出 Demo 链接和 README 截图/GIF 后再发布。
 
 ## Quality Bar

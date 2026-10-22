@@ -7,7 +7,7 @@
 **Turn Markdown / README into clickable, shareable HTML presentation pages.**
 
 [![License](https://img.shields.io/badge/License-MIT%20%2B%20Additional%20Terms-blue.svg)](LICENSE)
-[![Validate](https://img.shields.io/github/actions/workflow/status/AIPMAndy/LivePPT/validate-skill.yml?label=validate)](https://github.com/AIPMAndy/LivePPT/actions/workflows/validate-skill.yml)
+[![Validate](https://img.shields.io/github/actions/workflow/status/AIPMAndy/LivePPT/validate.yml?label=validate)](https://github.com/AIPMAndy/LivePPT/actions/workflows/validate.yml)
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/LivePPT?style=social)](https://github.com/AIPMAndy/LivePPT/stargazers)
 
 ![LivePPT Demo Preview](assets/demo.gif)
@@ -48,7 +48,7 @@ but the primary product value is the final HTML result, not an intermediate plan
 
 ```bash
 git clone https://github.com/AIPMAndy/LivePPT.git
-cd LivePPT
+cd LivePPT/skills/public/LivePPT
 make validate
 ```
 
@@ -220,6 +220,8 @@ See [ROADMAP.md](ROADMAP.md) for details.
 - [releases/distribution-pack-2026-03-03.md](releases/distribution-pack-2026-03-03.md)
 
 ## License
+
+⚠️ The root directory and the Skill directory contain different license texts. See the [licensing notes](../../../README.md#授权说明) and confirm commercial usage with the maintainer.
 
 `MIT + Additional Terms`
 

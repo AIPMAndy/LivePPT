@@ -7,7 +7,7 @@
 **把 Markdown / README 变成可点击、可翻页、可分享的 HTML 演示页。**
 
 [![License](https://img.shields.io/badge/License-MIT%20%2B%20Additional%20Terms-blue.svg)](LICENSE)
-[![Validate](https://img.shields.io/github/actions/workflow/status/AIPMAndy/LivePPT/validate-skill.yml?label=validate)](https://github.com/AIPMAndy/LivePPT/actions/workflows/validate-skill.yml)
+[![Validate](https://img.shields.io/github/actions/workflow/status/AIPMAndy/LivePPT/validate.yml?label=validate)](https://github.com/AIPMAndy/LivePPT/actions/workflows/validate.yml)
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/LivePPT?style=social)](https://github.com/AIPMAndy/LivePPT/stargazers)
 
 ![LivePPT Demo Preview](assets/demo.gif)
@@ -47,7 +47,7 @@ LivePPT 不是传统 PPT 工具，也不是单纯的 README 模板。
 
 ```bash
 git clone https://github.com/AIPMAndy/LivePPT.git
-cd LivePPT
+cd LivePPT/skills/public/LivePPT
 make validate
 ```
 
@@ -219,6 +219,8 @@ python3 scripts/add_theme.py \
 - [releases/distribution-pack-2026-03-03.md](releases/distribution-pack-2026-03-03.md)
 
 ## License
+
+⚠️ 仓库根目录与 Skill 子目录有两份不同的许可文本。商业用途请阅读[根目录授权说明](../../../README.md#授权说明)并向作者确认。
 
 `MIT + Additional Terms`（附加条款）
 

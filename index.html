@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f6">
+  <meta name="description" content="LivePPT：把 Markdown 和 GitHub README 一键转换为可翻页、可演示、可分享的独立 HTML 页面。无需前端构建工具，开箱即用。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LivePPT — 把 README 变成一场发布会">
+  <meta property="og:description" content="一份 Markdown，一条命令，一个可直接分享的 HTML 演示页面。">
+  <title>LivePPT — Markdown 转交互式 HTML 演示页</title>
+  <style>
+    :root{color-scheme:light;--bg:#f8f8f6;--paper:#fff;--ink:#1c222b;--muted:#68717c;--line:#e7e9ea;--accent:#345ff5;--radius:24px;--shadow:0 24px 70px rgba(28,34,43,.07)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}::selection{background:#cfdaff}.container{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+    .site-header{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.logo{display:flex;align-items:center;gap:11px;font-size:18px;font-weight:760;letter-spacing:-.04em}.logo-mark{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:#181d28;color:#fff;font-size:16px}.nav{display:flex;align-items:center;gap:29px;font-size:13px;color:#626b77}.nav a:hover,.site-footer a:hover{color:var(--accent)}.header-star{padding:9px 17px;border-radius:999px;background:#1b222d;color:white;font-weight:650;font-size:13px}
+    .hero{position:relative;overflow:hidden;padding:100px 0 80px;border-bottom:1px solid var(--line)}.hero:before{content:"";position:absolute;z-index:-1;top:-300px;right:-100px;width:min(750px,85vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#dfe7ff 0%,rgba(223,231,255,0) 68%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.2em;color:#536278;font-weight:750}.hero h1{font-size:clamp(42px,5.5vw,75px);line-height:1.11;letter-spacing:-.067em;font-weight:770;margin:19px 0 25px}.hero h1 .accent{color:var(--accent)}.lede{font-size:18px;color:var(--muted);max-width:490px;line-height:1.85;margin:0}.cta{display:flex;flex-wrap:wrap;gap:12px;margin:34px 0 32px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;border:1px solid var(--line);background:white;color:var(--ink);padding:13px 20px;border-radius:13px;font-size:14px;font-weight:700;transition:transform .2s ease,background .2s ease}.btn:hover{transform:translateY(-2px)}.btn-primary{background:#19212f;color:#fff;border-color:#19212f}.btn-primary:hover{background:#354358}.btn svg{width:16px;height:16px}.proof{font-size:13px;color:#818791;display:flex;flex-wrap:wrap;align-items:center;gap:8px}.proof strong{color:#445066}
+    .window{border:1px solid #d9dee7;border-radius:23px;background:white;box-shadow:0 35px 90px rgba(41,57,98,.13);overflow:hidden;transform:rotate(-1.5deg)}.chrome{height:43px;border-bottom:1px solid #eceef2;display:flex;align-items:center;gap:7px;padding:0 17px;background:#fafbfc}.dot{width:9px;height:9px;border-radius:50%;background:#d7dce4}.chrome .address{font-size:11px;color:#9aa2ad;margin-left:20px}.window-body{min-height:392px;padding:34px 37px;background:linear-gradient(146deg,#f8fafe,#fff 60%)}.window-step{font-size:12px;letter-spacing:.16em;color:#5573bc;text-transform:uppercase;font-weight:800}.window-body h2{font-size:clamp(31px,3vw,43px);line-height:1.2;letter-spacing:-.055em;max-width:390px;margin:29px 0 14px}.window-body p{color:#6d7580;max-width:310px;font-size:14px}.fake-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:40px}.fake-card{border-radius:12px;height:83px;background:#eef3fc;border:1px solid #e0e7f2;padding:15px}.fake-card:after,.fake-card:before{content:"";display:block;background:#a5b7db;border-radius:3px;height:6px;margin-bottom:11px}.fake-card:before{width:30%}.fake-card:after{width:75%;background:#c5d2e7}.window-bottom{border-top:1px solid #e8edf3;padding:15px 24px;display:flex;justify-content:space-between;align-items:center;color:#7d8693;font-size:12px}.mini-progress{width:50%;height:4px;border-radius:999px;background:#e6edfc;overflow:hidden}.mini-progress:after{content:"";display:block;height:100%;width:55%;background:var(--accent);border-radius:999px}
+    section.block{padding:95px 0}.section-head{max-width:735px;margin-bottom:34px}.section-head h2{font-size:clamp(29px,4vw,48px);line-height:1.24;letter-spacing:-.05em;margin:15px 0}.section-head p{color:var(--muted);font-size:16px;margin:0}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.metric{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:29px}.metric b{font-size:36px;letter-spacing:-.06em}.metric p{color:var(--muted);font-size:14px;margin:4px 0 0}.metric span{font-weight:750;color:var(--accent);font-size:12px;letter-spacing:.06em}
+    .demo-wrap{background:#eef0f4;padding:60px 0 80px}.demo-frame{background:#fff;overflow:hidden;border-radius:24px;border:1px solid #dce1e6;box-shadow:var(--shadow)}.demo-top{height:56px;padding:0 21px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);font-size:13px;color:#7a8490}.demo-top strong{color:#323b46}.demo-top a{color:var(--accent);font-weight:700}.demo-frame iframe{display:block;width:100%;height:580px;border:0;background:#fff}.demo-note{font-size:13px;color:#69727f;margin:15px 0 0}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.feature{padding:31px;background:#fff;border:1px solid var(--line);border-radius:20px}.feature .number{font-size:12px;font-weight:750;color:var(--accent);letter-spacing:.1em}.feature h3{font-size:20px;letter-spacing:-.025em;margin:17px 0 6px}.feature p{color:var(--muted);font-size:14px;margin:0}
+    .code-panel{border-radius:22px;background:#161c28;color:#e3eaf5;box-shadow:var(--shadow);overflow:hidden}.code-head{height:51px;padding:0 21px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #303a4b;color:#aab5c6;font-size:12px}.copy-btn{border:1px solid #475266;border-radius:8px;padding:5px 11px;color:#f2f5fb;background:transparent;cursor:pointer;font-size:12px}.copy-btn:hover{background:#303b4d}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:2;margin:0;padding:25px 29px;font-family:ui-monospace,"SFMono-Regular",Consolas,monospace}pre .comment{color:#8ba0bb}pre .command{color:#a9bdfd}.usage-note{margin-top:17px;color:var(--muted);font-size:13px}
+    .last-cta{background:#fff;border:1px solid var(--line);padding:39px;border-radius:24px;display:flex;align-items:center;justify-content:space-between;gap:28px}.last-cta h2{font-size:30px;letter-spacing:-.045em;margin:0 0 8px}.last-cta p{color:var(--muted);margin:0;font-size:14px}.author{border-top:1px solid var(--line);padding:45px 0 55px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.author p{font-size:14px;color:var(--muted);max-width:630px;margin:10px 0}.author-links{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;font-weight:670;margin-top:15px}.site-footer{font-size:12px;color:#8b929a;border-top:1px solid var(--line);padding:23px 0 35px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    @media(max-width:900px){.hero{padding:72px 0}.hero-grid{grid-template-columns:1fr;gap:55px}.window{max-width:620px;transform:none}.nav{gap:13px}.metrics{grid-template-columns:1fr}.demo-frame iframe{height:570px}}
+    @media(max-width:600px){.container{width:min(100% - 32px,1160px)}.nav a:not(.header-star){display:none}.site-header{height:67px}.hero{padding:60px 0}.hero h1{font-size:47px}.window-body{padding:28px 22px;min-height:330px}.window-body h2{font-size:33px}.fake-card{height:65px;padding:11px}.metrics{gap:12px}.metric{padding:22px}.block{padding:65px 0!important}.demo-wrap{padding:50px 0!important}.demo-frame iframe{height:620px}.feature-grid{grid-template-columns:1fr}.last-cta{display:block;padding:27px}.last-cta .btn{margin-top:20px}.author{padding:32px 0}.cta .btn{flex:1}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <header class="site-header container">
+    <a class="logo" href="#top" aria-label="LivePPT 首页"><span class="logo-mark" aria-hidden="true">L·</span>LivePPT</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#features">核心能力</a><a href="#demo">演示体验</a><a href="#quickstart">快速开始</a>
+      <a class="header-star" href="https://github.com/AIPMAndy/LivePPT" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Markdown → Interactive Presentation</div>
+          <h1>把 README，<br>变成一场<span class="accent">发布会。</span></h1>
+          <p class="lede">文档写得再好，也未必有人愿意逐行看。LivePPT 用一条命令把 Markdown 转成可翻页、可演示、可分享的 HTML 页面。</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#demo">在线体验 <span aria-hidden="true">↗</span></a>
+            <a class="btn" href="#quickstart">30 秒上手 <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="proof"><strong>本地生成</strong> <span>·</span> <strong>独立 HTML</strong> <span>·</span> <strong>无需前端构建</strong></div>
+        </div>
+        <div class="window" aria-label="LivePPT 页面视觉预览示意图">
+          <div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="address">LivePPT / interactive HTML</span></div>
+          <div class="window-body">
+            <div class="window-step">Live Presentation / 03</div>
+            <h2>Show the idea.<br>Not the bullet list.</h2>
+            <p>将复杂内容拆成可讲解、可导航、有节奏的交互式页面。</p>
+            <div class="fake-grid" aria-hidden="true"><div class="fake-card"></div><div class="fake-card"></div><div class="fake-card"></div></div>
+          </div>
+          <div class="window-bottom"><span>03 / 06 · Demo Preview</span><span class="mini-progress" aria-hidden="true"></span><span>→</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="block container" id="features">
+      <div class="section-head"><div class="eyebrow">Made for ideas worth sharing</div><h2>足够轻，才能真正用起来。</h2><p>避免复杂工具链，把时间留给叙事、表达和产品本身。</p></div>
+      <div class="metrics">
+        <div class="metric"><span>INPUT</span><div><b>1</b> 份</div><p>Markdown 或 GitHub README</p></div>
+        <div class="metric"><span>WORKFLOW</span><div><b>1</b> 条</div><p>本地生成命令，无需 Node.js</p></div>
+        <div class="metric"><span>OUTPUT</span><div><b>1</b> 个</div><p>可离线打开的 HTML 演示页</p></div>
+      </div>
+    </section>
+    <section id="demo" class="demo-wrap">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Interactive demo</div><h2>先看演示，再决定要不要用。</h2><p>下面嵌入的是仓库里真正的 LivePPT 示例。可以直接点击翻页、使用方向键操作。</p></div>
+        <div class="demo-frame">
+          <div class="demo-top"><span><strong>LivePPT Promo</strong> · 实际项目演示</span><a href="./skills/public/LivePPT/demos/liveppt-promo/index.html" target="_blank" rel="noopener noreferrer">全屏打开 ↗</a></div>
+          <iframe src="./skills/public/LivePPT/demos/liveppt-promo/index.html" title="LivePPT 可交互产品演示" loading="lazy"></iframe>
+        </div>
+        <p class="demo-note">演示依赖同仓库静态文件，无外部接口调用。如果嵌入窗口较小，请使用右上角「全屏打开」。</p>
+      </div>
+    </section>
+    <section class="block container">
+      <div class="section-head"><div class="eyebrow">What you can do</div><h2>从文档到交互演示，一条完整链路。</h2></div>
+      <div class="feature-grid">
+        <div class="feature"><div class="number">01 / IMPORT</div><h3>README 直接生成</h3><p>适合开源发布、功能说明和课程内容。把已有 Markdown 按标题拆成演示页面。</p></div>
+        <div class="feature"><div class="number">02 / NAVIGATION</div><h3>翻页与快捷键</h3><p>支持上一页、下一页、目录导航与进度提示，也能使用键盘控制。</p></div>
+        <div class="feature"><div class="number">03 / THEMES</div><h3>多主题风格</h3><p>使用预置主题生成不同视觉风格，适合产品、技术、咨询等场景。</p></div>
+        <div class="feature"><div class="number">04 / DEPLOY</div><h3>可分享的静态 HTML</h3><p>生成结果无需部署服务即可离线打开，也可以上传到静态托管平台分享。</p></div>
+      </div>
+    </section>
+    <section class="block container" id="quickstart">
+      <div class="section-head"><div class="eyebrow">Get started</div><h2>复制命令，开始你的第一场演示。</h2><p>仅需 Git、Python 3.11+ 和 Make；不依赖 npm 构建过程。</p></div>
+      <div class="code-panel">
+        <div class="code-head"><span>Terminal · macOS / Linux</span><button class="copy-btn" id="copyCommand" type="button" aria-label="复制快速开始命令">复制命令</button></div>
+        <pre id="commands"><span class="comment"># 下载并进入生成器目录</span>
+<span class="command">git clone https://github.com/AIPMAndy/LivePPT.git</span>
+<span class="command">cd LivePPT/skills/public/LivePPT</span>
+
+<span class="comment"># 从现成 README 生成 HTML</span>
+<span class="command">make build-from-readme README_INPUT=README.md OUTPUT=dist/readme-deck.html</span>
+
+<span class="comment"># 浏览器打开生成结果</span>
+<span class="command">open dist/readme-deck.html</span></pre>
+      </div>
+      <p class="usage-note">Windows 可运行 <code>python scripts/build_from_readme.py README.md --output dist/readme-deck.html</code>。不支持直接导出 .pptx，也不保证复杂 Markdown 布局无损还原。</p>
+    </section>
+    <section class="block container">
+      <div class="last-cta">
+        <div><div class="eyebrow">Build in public</div><h2>好的工具，应该让每个人都用得起。</h2><p>查看源码、示例与文档。欢迎提交复现步骤明确的 Issue 或 PR。</p></div>
+        <a class="btn btn-primary" href="https://github.com/AIPMAndy/LivePPT" target="_blank" rel="noopener noreferrer">查看 GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <aside class="author container" aria-label="作者与联系">
+    <div><strong>AI 酋长 Andy · LivePPT 作者</strong><p>从 AI 产品、职场求职咨询到个人业务增长。项目相关合作请说明你的使用场景，商业授权请先确认许可范围。</p><div class="author-links"><a href="https://metaver.vip/" target="_blank" rel="noopener noreferrer">官方网站 ↗</a><a href="https://github.com/AIPMAndy" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://x.com/AIPMAndy" target="_blank" rel="noopener noreferrer">X ↗</a><span>微信：AIPMAndy</span></div></div>
+  </aside>
+  <footer class="site-footer container"><span>© 2026 LivePPT · AIPMAndy</span><span>License：请以仓库及子目录许可文件为准，商业用途请先核实。</span></footer>
+  <script>
+    document.getElementById('copyCommand').addEventListener('click', async function() {
+      const content = [
+        'git clone https://github.com/AIPMAndy/LivePPT.git',
+        'cd LivePPT/skills/public/LivePPT',
+        'make build-from-readme README_INPUT=README.md OUTPUT=dist/readme-deck.html',
+        'open dist/readme-deck.html'
+      ].join('\n');
+      try {
+        await navigator.clipboard.writeText(content);
+        this.textContent = '已复制 ✓';
+      } catch (_error) {
+        this.textContent = '复制失败，请手动选择';
+      }
+    });
+  </script>
+</body>
+</html>
