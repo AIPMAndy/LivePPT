@@ -1,0 +1,33 @@
+name: Validate LivePPT
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check Python compilation
+        run: python -m compileall -q skills/public/LivePPT/scripts
+      - name: Run regression tests
+        run: python -m unittest discover -s skills/public/LivePPT/tests -p 'test_*.py' -v
+      - name: Smoke test all generators
+        working-directory: skills/public/LivePPT
+        run: python scripts/validate_skill.py
