@@ -72,5 +72,22 @@ class RendererTests(unittest.TestCase):
             self.assertTrue(output_file.read_text(encoding="utf-8").startswith("<!doctype html>"))
 
 
+    def test_readme_keeps_heading_in_centered_div(self):
+        readme_spec = importlib.util.spec_from_file_location(
+            "liveppt_readme", ROOT / "scripts" / "build_from_readme.py"
+        )
+        readme = importlib.util.module_from_spec(readme_spec)
+        readme_spec.loader.exec_module(readme)
+        markdown = '<div align="center">\n\n# LivePPT\n\n<img src="demo.gif">\n\n</div>\n\n## 介绍\n\n你好'
+        cleaned = readme.clean_markdown(markdown)
+        self.assertIn("# LivePPT", cleaned)
+        self.assertIn("## 介绍", cleaned)
+        self.assertNotIn("<div", cleaned)
+        self.assertNotIn("<img", cleaned)
+        deck = renderer.build_deck(cleaned, "fallback", None, "LivePPT", "neo-luxury")
+        self.assertEqual(deck["title"], "LivePPT")
+
+
+
 if __name__ == "__main__":
     unittest.main()
