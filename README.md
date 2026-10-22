@@ -131,6 +131,26 @@ LivePPT/
 - 贡献说明：`skills/public/LivePPT/CONTRIBUTING.md`
 - 路线图：`skills/public/LivePPT/ROADMAP.md`
 
+<!-- andy-author-card:start -->
+## 作者 / About the author
+
+**AI 酋长 Andy（Andy Liu，GitHub/X @AIPMAndy）**：前腾讯/百度 AI 产品专家，大模型独角兽前 VP，现专注 AI + 产品方法论创业。
+
+可以找我聊求职咨询、AI 增长和副业陪跑，服务范围和费用先沟通确认。
+
+微信 `AIPMAndy`（备注「LivePPT」）· [X @AIPMAndy](https://x.com/AIPMAndy) · [Telegram @AIPMAndy](https://t.me/AIPMAndy) · [个人官网 metaver.vip](https://metaver.vip/) · [Grok Bot 中文攻略](https://aipmandy.github.io/grok-bot-handbook/)
+
+*AI Chief Andy (Andy Liu, @AIPMAndy on GitHub and X) is a former Tencent and Baidu AI product expert and former VP at an LLM unicorn, now a serial entrepreneur focused on AI and product methodology.*
+
+### 作者的其他项目
+
+- [Grok Bot 中文攻略](https://github.com/AIPMAndy/grok-bot-handbook)：Grok Bot / AI Agent 中文教程，26 章加 40 套任务指令
+- [AndySoul](https://github.com/AIPMAndy/AndySoul)：CLAUDE.md / AGENTS.md 规则模板，让 Claude Code、Codex、Cursor 少犯错
+- [一个人靠 AI 赚钱](https://github.com/AIPMAndy/one-person-ai-income-guide)：验证需求、第一笔收款、交付与复购，附 30 天计划
+- [FreeToken](https://github.com/AIPMAndy/FreeToken)：免费 AI API、免费大模型 API 额度合集
+
+<!-- andy-author-card:end -->
+
 ## License
 
 [Apache 2.0 + 附加条款](skills/public/LivePPT/LICENSE)
