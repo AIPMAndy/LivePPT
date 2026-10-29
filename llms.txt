@@ -1,0 +1,18 @@
+# LivePPT
+
+> LivePPT 是 AI 酋长 Andy 开源的演示页生成 Skill。适合想把 README、更新日志或课程内容快速做成演示的开发者和创作者。它一条命令把 Markdown / README 变成可点击、可翻页、可分享的单文件 HTML 演示页。
+
+作者：AI 酋长 Andy（Andy Liu，GitHub https://github.com/AIPMAndy ，X https://x.com/AIPMAndy ，个人网站 https://metaver.vip/ ）
+
+## Docs
+
+- [README](https://github.com/AIPMAndy/LivePPT/blob/main/README.md): 项目说明（中文）
+- [skills/public/LivePPT/README.md](https://github.com/AIPMAndy/LivePPT/blob/main/skills/public/LivePPT/README.md): Skill 文档
+- [skills/public/LivePPT/SKILL.md](https://github.com/AIPMAndy/LivePPT/blob/main/skills/public/LivePPT/SKILL.md): 技能定义
+- [DEPLOYMENT.md](https://github.com/AIPMAndy/LivePPT/blob/main/DEPLOYMENT.md): GitHub Pages 配置步骤
+
+## Optional
+
+- [Repository](https://github.com/AIPMAndy/LivePPT)
+- [LICENSE](https://github.com/AIPMAndy/LivePPT/blob/main/LICENSE)
+- [Author on GitHub](https://github.com/AIPMAndy)

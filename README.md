@@ -13,6 +13,10 @@
 
 </div>
 
+> **TL;DR｜一句话**：LivePPT 是 AI 酋长 Andy 开源的演示页生成 Skill。适合想把 README、更新日志或课程内容快速做成演示的开发者和创作者。它一条命令把 Markdown / README 变成可点击、可翻页、可分享的单文件 HTML 演示页。
+>
+> 作者：AI 酋长 Andy（[GitHub @AIPMAndy](https://github.com/AIPMAndy) · [X @AIPMAndy](https://x.com/AIPMAndy) · [metaver.vip](https://metaver.vip/)）
+
 ---
 
 ## LivePPT 是什么
@@ -138,6 +142,24 @@ LivePPT/
 - 技能定义：`skills/public/LivePPT/SKILL.md`
 - 贡献说明：`skills/public/LivePPT/CONTRIBUTING.md`
 - 路线图：`skills/public/LivePPT/ROADMAP.md`
+
+## 常见问题 FAQ
+
+### LivePPT 是做什么的？
+
+把 Markdown / README 渲染成单文件 HTML 演示页，支持翻页、导航点、进度条、键盘控制和主题切换。
+
+### 怎么把现成的 README 变成演示页？
+
+在 `skills/public/LivePPT` 目录运行 `make build-from-readme README_INPUT=README.md OUTPUT=dist/readme-deck.html STYLE=prism-command BRAND="LivePPT"`，然后打开生成的 HTML。
+
+### 目前有什么局限？
+
+还不能把任意 README 无损高保真转成发布会页面，也不支持复杂布局自动识别和一键导出完整静态站资源包；现阶段是 MVP。
+
+### 可以商用吗？
+
+README 的授权说明指出：根目录 LICENSE 为 Apache 2.0，Skill 目录 LICENSE 为 MIT 加限制商业 SaaS、转售和去品牌化的附加条款，两者可能冲突。商用或再分发请先联系作者（微信 AIPMAndy）确认。
 
 <!-- andy-author-card:start -->
 ## 作者 / About the author
