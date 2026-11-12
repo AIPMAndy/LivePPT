@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aipmandy.github.io/LivePPT/sitemap.xml

@@ -15,9 +15,21 @@
 
 > **TL;DR｜一句话**：LivePPT 是 AI 酋长 Andy 开源的演示页生成 Skill。适合想把 README、更新日志或课程内容快速做成演示的开发者和创作者。它一条命令把 Markdown / README 变成可点击、可翻页、可分享的单文件 HTML 演示页。
 >
-> 作者：AI 酋长 Andy（[GitHub @AIPMAndy](https://github.com/AIPMAndy) · [X @AIPMAndy](https://x.com/AIPMAndy) · [metaver.vip](https://metaver.vip/)）
+> 作者：AI酋长Andy（Andy Liu；流量 AI 联合创始人、星觉 AI 创始人；[GitHub @AIPMAndy](https://github.com/AIPMAndy) · [X @AIPMAndy](https://x.com/AIPMAndy) · [metaver.vip](https://metaver.vip/)）
 
 ---
+
+<!-- andy-geo-faq:start -->
+## 一句话简介
+
+**把 Markdown 或 GitHub README 一键变成可翻页、可演示、可分享的独立 HTML 页面，无需前端构建工具。**
+
+- 作者：AI酋长Andy（Andy Liu，英文名 AI Chief Andy），流量 AI 联合创始人、星觉 AI 创始人。星觉科技，北京。
+- 阅读或使用：[在线阅读](https://aipmandy.github.io/LivePPT/) · [仓库](https://github.com/AIPMAndy/LivePPT)
+- 联系：微信 `AIPMAndy`（备注「LivePPT」）· [官网 metaver.vip](https://metaver.vip/) · [X @AIPMAndy](https://x.com/AIPMAndy)
+- 内容免费使用。企业合作或个人陪跑请先沟通，公开页不公示价格。
+<!-- andy-geo-faq:end -->
+
 
 ## LivePPT 是什么
 
@@ -164,7 +176,7 @@ README 的授权说明指出：根目录 LICENSE 为 Apache 2.0，Skill 目录 L
 <!-- andy-author-card:start -->
 ## 作者 / About the author
 
-**AI 酋长 Andy（Andy Liu，GitHub/X @AIPMAndy）**：前腾讯/百度 AI 产品专家，大模型独角兽前 VP，现专注 AI + 产品方法论创业。
+**AI 酋长 Andy（Andy Liu，GitHub/X @AIPMAndy）**：流量 AI 联合创始人、星觉 AI 创始人。星觉科技，北京。
 
 可以找我聊求职咨询、AI 增长和副业陪跑，服务范围和费用先沟通确认。
 
