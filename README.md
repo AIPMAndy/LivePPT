@@ -4,7 +4,7 @@
 
 **把 Markdown / README 变成可点击、可翻页、可分享的 HTML 演示页。**
 
-[![License](https://img.shields.io/badge/License-See%20license%20notes-informational.svg)](#授权说明)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](#授权说明)
 [![GitHub Stars](https://img.shields.io/github/stars/AIPMAndy/LivePPT?style=social)](https://github.com/AIPMAndy/LivePPT)
 
 **简体中文**
@@ -171,7 +171,7 @@ LivePPT/
 
 ### 可以商用吗？
 
-README 的授权说明指出：根目录 LICENSE 为 Apache 2.0，Skill 目录 LICENSE 为 MIT 加限制商业 SaaS、转售和去品牌化的附加条款，两者可能冲突。商用或再分发请先联系作者（微信 AIPMAndy）确认。
+可以。仓库统一采用 MIT License，可商用、修改、分发和再发布，只需保留版权与许可声明。详见 [LICENSE](LICENSE)。
 
 <!-- andy-author-card:start -->
 ## 作者 / About the author
@@ -195,12 +195,13 @@ README 的授权说明指出：根目录 LICENSE 为 Apache 2.0，Skill 目录 L
 
 ## 授权说明
 
-**当前仓库存在两份不同的许可文本，尚待作者统一授权口径：**
+**本仓库统一采用 MIT License。**
 
-- [根目录 LICENSE](LICENSE)：Apache License 2.0。
-- [Skill 目录 LICENSE](skills/public/LivePPT/LICENSE)：MIT 文本及限制商业 SaaS、转售和去品牌化的附加条款。
+- [根目录 LICENSE](LICENSE)：MIT，适用于整个仓库。
+- [Skill 目录 LICENSE](skills/public/LivePPT/LICENSE)：同一 MIT 文本，随 Skill 分发。
+- [LICENSE_EN.md](skills/public/LivePPT/LICENSE_EN.md)：英文版 MIT 文本。
 
-两份文本在商业使用范围上可能存在冲突。请勿简单将整个项目描述为“统一采用 Apache/MIT 开源协议”；涉及商用或再分发，请先向作者确认适用条款。联系：**微信 AIPMAndy**。
+可商用、修改、分发和再发布，只需保留版权与许可声明。仓库此前的 Apache-2.0 授权与署名记录在 [NOTICE](NOTICE)。
 
 ---
 

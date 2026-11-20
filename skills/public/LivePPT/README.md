@@ -6,7 +6,7 @@
 
 **把 Markdown / README 变成可点击、可翻页、可分享的 HTML 演示页。**
 
-[![License](https://img.shields.io/badge/License-MIT%20%2B%20Additional%20Terms-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Validate](https://img.shields.io/github/actions/workflow/status/AIPMAndy/LivePPT/validate.yml?label=validate)](https://github.com/AIPMAndy/LivePPT/actions/workflows/validate.yml)
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/LivePPT?style=social)](https://github.com/AIPMAndy/LivePPT/stargazers)
 
@@ -220,12 +220,11 @@ python3 scripts/add_theme.py \
 
 ## License
 
-⚠️ 仓库根目录与 Skill 子目录有两份不同的许可文本。商业用途请阅读[根目录授权说明](../../../README.md#授权说明)并向作者确认。
-
-`MIT + Additional Terms`（附加条款）
+本 Skill 与仓库统一采用 **MIT License**。可商用、修改、分发和再发布，只需保留版权与许可声明。
 
 - 中文条款：`LICENSE`
 - 英文条款：`LICENSE_EN.md`
+- 仓库根目录授权说明：[LICENSE](../../../LICENSE)
 
 ---
 

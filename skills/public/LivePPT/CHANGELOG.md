@@ -19,6 +19,7 @@ All notable changes to `LivePPT` are documented in this file.
 
 ### Changed
 
+- 许可证统一为 MIT：根目录 `LICENSE`、Skill 目录 `LICENSE`、`LICENSE_EN.md` 及 README 授权说明保持一致；历史 Apache-2.0 署名记录在根目录 `NOTICE`。
 - 品牌命名统一为 `LivePPT`（`SKILL.md`、README、workflow、贡献文档等）。
 - 新增 `prism-command`、`linen-editorial`、`signal-night` 风格预设。
 - 重构 `README.md` 首屏结构，补充对比表、30 秒快速开始、场景与 CTA。

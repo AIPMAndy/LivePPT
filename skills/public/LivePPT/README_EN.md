@@ -6,7 +6,7 @@
 
 **Turn Markdown / README into clickable, shareable HTML presentation pages.**
 
-[![License](https://img.shields.io/badge/License-MIT%20%2B%20Additional%20Terms-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Validate](https://img.shields.io/github/actions/workflow/status/AIPMAndy/LivePPT/validate.yml?label=validate)](https://github.com/AIPMAndy/LivePPT/actions/workflows/validate.yml)
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/LivePPT?style=social)](https://github.com/AIPMAndy/LivePPT/stargazers)
 
@@ -221,12 +221,11 @@ See [ROADMAP.md](ROADMAP.md) for details.
 
 ## License
 
-⚠️ The root directory and the Skill directory contain different license texts. See the [licensing notes](../../../README.md#授权说明) and confirm commercial usage with the maintainer.
-
-`MIT + Additional Terms`
+This Skill and the repository are licensed under the **MIT License**. You may use it commercially, modify it, distribute it, and redistribute it, provided that the copyright and permission notice are retained.
 
 - Chinese terms: `LICENSE`
 - English terms: `LICENSE_EN.md`
+- Repository license: [LICENSE](../../../LICENSE)
 
 ---
 

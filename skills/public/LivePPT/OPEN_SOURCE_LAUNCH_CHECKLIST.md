@@ -11,6 +11,7 @@
 ## 2) Repository Hygiene
 
 - [ ] 确认 `LICENSE`、`ROADMAP.md`、`CHANGELOG.md` 已更新。
+- [ ] 确认根目录 `LICENSE`、Skill 目录 `LICENSE`、`LICENSE_EN.md` 与两份 README 的授权口径一致（MIT）。
 - [ ] 确认无敏感信息（token、密钥、账号凭据）被提交。
 - [ ] 确认生成目录（如 `plans/`、`themes/`）不会进入版本库。
 - [ ] 确认 `README.md` 与 `README_EN.md` 同步更新且顶部可互跳。

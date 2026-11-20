@@ -6,7 +6,7 @@
 
 ## Docs
 
-- [README](https://github.com/AIPMAndy/LivePPT/blob/main/README.md): 项目说明（中文）
+- [README](https://github.com/AIPMAndy/LivePPT/blob/main/README.md): 项目说明（中文，MIT License）
 - [skills/public/LivePPT/README.md](https://github.com/AIPMAndy/LivePPT/blob/main/skills/public/LivePPT/README.md): Skill 文档
 - [skills/public/LivePPT/SKILL.md](https://github.com/AIPMAndy/LivePPT/blob/main/skills/public/LivePPT/SKILL.md): 技能定义
 - [DEPLOYMENT.md](https://github.com/AIPMAndy/LivePPT/blob/main/DEPLOYMENT.md): GitHub Pages 配置步骤
